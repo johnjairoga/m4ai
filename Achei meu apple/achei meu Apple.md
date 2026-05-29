@@ -905,38 +905,6 @@ Quer que eu te mande um vídeo pra você dar uma olhada nele?
 
   ---
 
-  ### **Manejo de Receios sobre Seminovos**
-
-  **Quando usar:**
-  Quando o cliente demonstrar medo, desconfiança ou receio explícito sobre comprar um seminovo:
-  - "Tenho medo de comprar seminovo"
-  - "Não confio em seminovos"
-  - "Realmente os seminovos são seguros?"
-  - "Prefiro novo porque me preocupa a qualidade"
-  - "E se o seminovo tiver problemas?"
-  - Qualquer expressão de desconfiança ou receio sobre qualidade de seminovos
-
-  **Resposta Obrigatória (enviar íntegra, sem edições):**
-
-  Nossos iphones vêm direto de fornecedor, não de troca.
-
-  Aqui você tem a total segurança que está adquirindo um produto todo revisado, testado, impecável, com garantia e acessórios.
-
-  Hoje 90% de nossas vendas são de iPhones seminovos justamente pela procedência e qualidade que entregamos.
-
-  Caso for nos pesquisar no Google vai ver que já passamos quase 900 clientes que nos avaliaram 5 ⭐⭐⭐⭐⭐ no Google.
-
-  Isso já diz muita coisa né!
-
-  **Regras:**
-  - ✅ Enviar a frase COMPLETA tal como está
-  - ✅ Não editar, não resumir, não agregar palavras
-  - ✅ Usar após detectar receio do cliente
-  - ✅ Enviar como mensagem única e íntegra
-  - ✅ Após esta resposta, continuar com o fluxo normal
-
-  ---
-
   **⚠️ ATENÇÃO: Os produtos e valores devem ser obtidos SEMPRE da tool ESTOQUE antes de apresentar qualquer orçamento.**
 
   ---
