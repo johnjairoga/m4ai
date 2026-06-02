@@ -13,10 +13,14 @@ Cada vez que se realice un cambio en un archivo conforme a los requerimientos de
 ### 1️⃣ Actualizar el archivo original
 - **Achei meu Apple:** editar `Achei meu apple/achei meu Apple.md`
 - **Vetor Imports:** editar `Vetor Imports/Vetor Imports.md`
+- **iBest:** editar `ibest/iBest.md`
+- **T2H:** editar `T2H/T2H.md`
 
 ### 2️⃣ Crear copia versionada (sincronizada con GitHub)
 - **Achei meu Apple:** crear `achei meu Apple_v{X.Y.Z}.md`
 - **Vetor Imports:** crear `Vetor Imports_v{X.Y.Z}.md`
+- **iBest:** crear `iBest_v{X.Y.Z}.md`
+- **T2H:** crear `T2H_v{X.Y.Z}.md`
 - El número DEBE coincidir con el tag en GitHub
 - Ejemplo: Si vamos a crear `v1.0.0` en GitHub → crear `Vetor Imports_v1.0.0.md`
 
@@ -61,6 +65,20 @@ VERSIÓN 1.0.0 (Inicial - 02/06/2026):
 ├─ GitHub tag: vetor-v1.0.0 ✅
 ├─ Archivo original: Vetor Imports.md
 └─ Copia versionada: Vetor Imports_v1.0.0.md
+
+=== IBEST ===
+
+VERSIÓN 1.0.0 (Inicial - 02/06/2026):
+├─ GitHub tag: ibest-v1.0.0
+├─ Archivo original: iBest.md
+└─ Copia versionada: iBest_v1.0.0.md (a crear após primeiro prompt)
+
+=== T2H ===
+
+VERSIÓN 1.0.0 (Inicial - 02/06/2026):
+├─ GitHub tag: t2h-v1.0.0
+├─ Archivo original: T2H.md
+└─ Copia versionada: T2H_v1.0.0.md (a crear após primeiro prompt)
 ```
 
 ---
