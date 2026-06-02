@@ -81,6 +81,45 @@ A IA estava pedindo o nome do cliente logo na primeira interação (Cenário A e
 
 ---
 
+## Mudança #3 - Nova Estrutura de Saudação Inicial (3 Bolhas Fixas)
+
+**Data:** 02/06/2026 - 13:30
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.3
+**Solicitante:** Cliente
+
+### Descrição
+A saudação inicial da Rafa foi reestruturada para seguir exatamente 3 bolhas fixas: `"Olá, Boa tarde! tudo bom?"` / `"Rafa aqui, muito prazer!"` / `"Como posso ajudar?"`. No Cenário B (cliente já pede produto na primeira mensagem), a terceira bolha é substituída pela confirmação do produto (ex: *"Trabalhamos com iPhone sim, qual você procura?"*), sem a bolha "Como posso ajudar?".
+
+### Arquivos Afetados
+`Vetor Imports.md` → `Vetor Imports_v1.0.3.md`
+
+### Pontos Alterados
+
+| Linha (v1.0.3) | Alteração |
+|---|---|
+| L269 | Cenário A — bolha 1: `"Boa tarde!"` → `"Olá, Boa tarde! tudo bom?"` |
+| L271 | Cenário A — bolha 3: `"O que você busca?"` → `"Como posso ajudar?"` |
+| L284 | Cenário B — bolha 1: `"Boa tarde!"` → `"Olá, Boa tarde! tudo bom?"` |
+| L317 | Regra NUNCA: atualizado `"Boa tarde!"` → `"Olá, Boa tarde! tudo bom?"` |
+| L329 | Exemplo JSON Cenário B: `"Boa tarde!"` → `"Olá, Boa tarde! tudo bom?"` |
+| L337 | Exemplo inline Cenário B (iPhone): atualizado para nova bolha 1 |
+| L341 | Exemplo inline Cenário A: bolha 1 e bolha 3 atualizadas |
+
+### Validação
+✅ Cenário A: 3 bolhas `"Olá, Boa tarde! tudo bom?"` + `"Rafa aqui, muito prazer!"` + `"Como posso ajudar?"`
+✅ Cenário B: 2 bolhas fixas + bolha de confirmação do produto (sem "Como posso ajudar?")
+✅ Todos os arrays `message` de exemplo atualizados
+✅ Regra "NUNCA repita" atualizada para referenciar a nova saudação
+✅ Nenhuma variação antiga (`"Boa tarde!"` isolado) restante na seção de apresentação
+
+### Impacto
+- **Previne:** IA usando saudação fragmentada ou sem "Olá" e "tudo bom?" na abertura
+- **Melhora:** Consistência e cordialidade no primeiro contato com o cliente
+- **Mantém:** Distinção entre Cenário A (3 bolhas) e Cenário B (2 bolhas fixas + produto)
+
+---
+
 <!-- Cada mudança segue o padrão abaixo. Copie o bloco e preencha. -->
 
 <!--
