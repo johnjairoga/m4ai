@@ -11,12 +11,14 @@
 Cada vez que se realice un cambio en un archivo conforme a los requerimientos del dueño:
 
 ### 1️⃣ Actualizar el archivo original
-- Editar: `achei meu Apple.md` con los cambios solicitados
+- **Achei meu Apple:** editar `Achei meu apple/achei meu Apple.md`
+- **Vetor Imports:** editar `Vetor Imports/Vetor Imports.md`
 
 ### 2️⃣ Crear copia versionada (sincronizada con GitHub)
-- Crear: `achei meu Apple_v{X.Y.Z}.md`
+- **Achei meu Apple:** crear `achei meu Apple_v{X.Y.Z}.md`
+- **Vetor Imports:** crear `Vetor Imports_v{X.Y.Z}.md`
 - El número DEBE coincidir con el tag en GitHub
-- Ejemplo: Si vamos a crear `v1.0.0` en GitHub → crear `achei meu Apple_v1.0.0.md`
+- Ejemplo: Si vamos a crear `v1.0.0` en GitHub → crear `Vetor Imports_v1.0.0.md`
 
 ### 3️⃣ Hacer commit en git
 ```bash
@@ -41,20 +43,24 @@ git push origin v1.0.0
 ## Ejemplo de Flujo Sincronizado:
 
 ```
+=== ACHEI MEU APPLE ===
+
 VERSIÓN 1.0.0 (Inicial):
 ├─ GitHub tag: v1.0.0 ✅
 ├─ Archivo original: achei meu Apple.md
 └─ Copia versionada: achei meu Apple_v1.0.0.md
 
-VERSIÓN 1.1.0 (Petición 1 - Nueva sección):
-├─ GitHub tag: v1.1.0 ✅
+VERSIÓN 1.1.0 → 1.1.2 (Mudanças do cliente):
+├─ GitHub tags: v1.1.0, v1.1.1, v1.1.2 ✅
 ├─ Archivo original: achei meu Apple.md (actualizado)
-└─ Copia versionada: achei meu Apple_v1.1.0.md
+└─ Copias versionadas: achei meu Apple_v1.1.0/1/2.md
 
-VERSIÓN 2.0.0 (Petición 2 - Cambio mayor):
-├─ GitHub tag: v2.0.0 ✅
-├─ Archivo original: achei meu Apple.md (actualizado)
-└─ Copia versionada: achei meu Apple_v2.0.0.md
+=== VETOR IMPORTS ===
+
+VERSIÓN 1.0.0 (Inicial - 02/06/2026):
+├─ GitHub tag: vetor-v1.0.0 ✅
+├─ Archivo original: Vetor Imports.md
+└─ Copia versionada: Vetor Imports_v1.0.0.md
 ```
 
 ---

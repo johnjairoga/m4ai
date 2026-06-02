@@ -36,12 +36,20 @@ M4IA/
 ├── README.md                    ← Este archivo
 ├── VERSIONADO.md               ← Documentación del sistema de versionado
 │
-├── Achei meu apple/            ← Carpeta principal del proyecto
-│   ├── achei meu Apple.md      ← Archivo original (siempre actualizado)
+├── Achei meu apple/            ← Loja: Achei Meu Apple
+│   ├── achei meu Apple.md      ← Arquivo de trabalho (sempre atualizado)
 │   ├── achei meu Apple_v1.0.0.md
-│   ├── achei meu Apple_v1.0.1.md
 │   ├── achei meu Apple_v1.1.0.md
-│   └── Prompt Original.md
+│   ├── achei meu Apple_v1.1.1.md
+│   ├── achei meu Apple_v1.1.2.md
+│   ├── Prompt Original.md
+│   └── CAMBIOS_PROMPT.md
+│
+├── Vetor Imports/              ← Loja: Vetor Imports
+│   ├── Vetor Imports.md        ← Arquivo de trabalho (sempre atualizado)
+│   ├── Vetor Imports_v1.0.0.md ← Versão inicial
+│   ├── Prompt Original.md
+│   └── CAMBIOS_PROMPT.md
 │
 ├── .git/                        ← Repositorio git local
 └── .gitignore                   ← (Si existe) archivos ignorados
