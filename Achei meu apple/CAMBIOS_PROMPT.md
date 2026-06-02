@@ -250,3 +250,86 @@ O que ficou faltando pra gente fechar? Posso te ajudar em alguma coisa?
 - **Alinha:** Com atendimento humano da loja (print de referência 27/04)
 
 ---
+
+## Mudança #5 - Qualificação de Modalidade de Pagamento com Linguagem de Proposta Exclusiva
+
+**Data:** 02/06/2026  
+**Status:** ✅ EXECUTADO  
+**Versão:** v1.1.4  
+**Solicitante:** Cliente
+
+### Problema Identificado
+A abordagem de perguntar modelo + capacidade + forma de pagamento **já apresentava bons resultados**, mas não estava padronizada nem reforçada no prompt. A IA apresentava o orçamento completo sem antes confirmar a modalidade de pagamento (à vista ou parcelado), perdendo uma oportunidade de gerar comprometimento e sensação de proposta personalizada.
+
+### Estratégia Adotada
+Inserir um novo passo de qualificação (**PASSO 3.5**) no fluxo obrigatório: após confirmar modelo e capacidade, e **antes** de consultar ESTOQUE e montar o orçamento, a IA pergunta a modalidade de pagamento usando linguagem que transmite proposta exclusiva e especial.
+
+**Frase modelo do cliente:**
+> "Me confirma então de que forma você tem interesse: à vista ou parcelado? Assim eu já monto uma proposta super especial e exclusiva para você."
+
+### Linhas Afetadas
+- **Linha ~347:** Inserção do novo `PASSO 3.5` (entre PASSO 3 e PASSO 4 do fluxo de atendimento)
+- **Linhas ~370-372 (CASO A):** Atualização da REGRA CRÍTICA de ORDEM DE PRIORIDADE
+- **Linhas ~382-391 (EXEMPLO):** Atualização do exemplo de fluxo correto
+- **Linhas ~444-452 (Outras informações):** Nova regra `🚨 FORMATO DA PERGUNTA DE MODALIDADE DE PAGAMENTO`
+- **Linha ~1626 (VBT checklist):** Inserção do passo 2.5 na checklist de qualificação VBT
+
+### Mudanças Específicas
+
+#### 1. Novo PASSO 3.5 — Confirmar Modalidade Antes do Orçamento
+```
+Inserido entre PASSO 3 e PASSO 4:
+- Se cliente já informou modalidade → pula para PASSO 4 direto
+- Se modalidade ainda não está clara → PERGUNTAR antes de consultar ESTOQUE
+- AGUARDAR resposta antes de calcular qualquer valor
+```
+
+#### 2. Atualização do CASO A — REGRA CRÍTICA ORDEM DE PRIORIDADE
+```
+Mudança de: "PRIMEIRO: Consulte ESTOQUE → DEPOIS: pergunte forma de pagamento"
+Para: "PRIMEIRO (PASSO 3.5): confirmar à vista/parcelado → SEGUNDO (PASSO 4): consultar ESTOQUE e apresentar orçamento"
+```
+
+#### 3. Exemplo do Fluxo Correto Atualizado
+```
+Antes mostrava: Cliente diz modelo → IA consulta estoque → IA apresenta orçamento
+Agora mostra:   Cliente diz modelo + GB → IA pergunta à vista/parcelado → Cliente responde → IA consulta estoque → IA apresenta orçamento
+```
+
+#### 4. Nova Regra de Formato (Outras informações)
+```
+🚨 FORMATO DA PERGUNTA DE MODALIDADE DE PAGAMENTO (qualificação antes do orçamento)
+- Quando usar: modelo + capacidade já confirmados, modalidade ainda não
+- NUNCA listar todas as formas de pagamento nesta etapa (só qualificação rápida)
+- 4 variações obrigatórias para rotação (evitar robótico)
+```
+
+#### 5. VBT Checklist — Passo 2.5
+```
+Inserido entre passo 2 (capacidade) e passo 3 (calcular):
+2.5: Confirmou modalidade de pagamento? Se não → perguntar com proposta exclusiva → PARE até resposta
+```
+
+### Variações da Frase (para rotação natural)
+- "Me confirma então de que forma você tem interesse: à vista ou parcelado? Assim eu já monto uma proposta super especial e exclusiva para você."
+- "Só me confirma: você prefere à vista ou parcelado? Assim eu já preparo uma proposta certinha e exclusiva pra você 😊"
+- "Me fala como você prefere: à vista ou parcelado? Assim já monto uma proposta especial para você."
+- "De que forma você prefere pagar: à vista ou parcelado? Assim eu já monto uma proposta super especial pra você!"
+
+### Validação
+✅ PASSO 3.5 inserido no fluxo obrigatório (entre PASSO 3 e PASSO 4)  
+✅ Regra de pular o passo se modalidade já foi informada  
+✅ CASO A da REGRA CRÍTICA atualizado para refletir nova ordem  
+✅ Exemplo de fluxo correto atualizado e consistente com nova regra  
+✅ Regra de formato com 4 variações para evitar resposta robótica  
+✅ Checklist VBT atualizado com passo 2.5  
+✅ Tudo em português do Brasil  
+✅ Não conflita com regra de FORMAS_PAGAMENTO (essa distinção está clara)  
+
+### Impacto
+- **Melhora:** Coleta de informações — a IA sabe à vista/parcelado antes de montar o orçamento
+- **Aumenta:** Conversão — linguagem de "proposta especial e exclusiva" gera comprometimento e valor percebido
+- **Padroniza:** Abordagem que já estava gerando bons resultados no atendimento humano
+- **Alinha:** Fluxo VBT também passa a incluir qualificação de modalidade antes do cálculo
+
+---
