@@ -203,3 +203,50 @@ Adicionado:
 - Simples de verificar: revisar histórico antes de fazer CTA sobre vídeo
 
 ---
+
+## Mudança #4 - Quebra de Objeção: Cliente vai pesquisar em outra loja
+
+**Data:** 02/06/2026  
+**Status:** ✅ EXECUTADO  
+**Versão:** v1.1.3  
+**Solicitante:** Cliente (27Abr - 02)
+
+### Problema Identificado
+Quando o cliente diz que vai pesquisar em outra loja, a IA não tinha fluxo específico — só existia o tratamento de **concorrência** ("achei mais barato" + print + gerente), que é outro momento do funil.
+
+O cliente questionou se deveria usar argumento e se é interessante **perguntar o que está faltando para fechar**.
+
+### Estratégia adotada (referência: atendimento humano Juliano)
+1. Validar sem pressionar ("Combinado!")
+2. Liberar para pesquisar
+3. **Argumento educativo:** orientar a comparar mesmo modelo, condição (lacrado/seminovo) e forma de pagamento
+4. **Pergunta única** sobre o que falta para fechar (abre objeção real)
+
+**Diferença do fluxo de concorrência:** neste cenário **não** pedir print nem gerente — o cliente ainda vai sair para pesquisar.
+
+### Linhas Afetadas
+- **Seção Persuasão:** nova `## Quebra de Objeção — Cliente vai pesquisar em outra loja`
+- **Persuasão (bullet):** referência cruzada ao novo fluxo
+
+### Respostas modelo (adaptar modelo/capacidade/condição reais)
+
+```
+Combinado, [nome]!
+Fica bem à vontade pra pesquisar 😊
+Só cuida pra comparar o mesmo modelo (iPhone 16 128GB lacrado) e a forma de pagamento, porque isso muda bastante.
+O que ficou faltando pra gente fechar? Posso te ajudar em alguma coisa?
+```
+
+### Validação
+✅ Fluxo separado do de concorrência (print/gerente)  
+✅ Argumento de comparação justa (modelo + condição + pagamento)  
+✅ Pergunta única sobre o que falta para fechar  
+✅ Exemplo real do WhatsApp documentado  
+✅ Tudo em português do Brasil  
+
+### Impacto
+- **Previne:** IA sem resposta ou usando fluxo errado (gerente/print) quando cliente só vai pesquisar
+- **Melhora:** Tom consultivo — ajuda o cliente a comparar corretamente e revela objeção oculta
+- **Alinha:** Com atendimento humano da loja (print de referência 27/04)
+
+---
