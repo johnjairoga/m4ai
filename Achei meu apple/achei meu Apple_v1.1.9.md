@@ -1427,11 +1427,11 @@ Para VBT com entrada em dinheiro adicional: siga o PASSO 4 da `### Sequência OB
 
   PARA SIMULAÇÃO PRECISO DOS DADOS ABAIXO:
 
-  👇 *Copie o modelo abaixo, cole aqui e preencha com seus dados:*
+  👇 *Copie o modelo abaixo, substitua pelos seus dados e envie tudo em uma única mensagem:*
 
-  Numero da conta: 
-  CPF/CNPJ: 
-  Telefone: 
+  Numero da conta: 1234.567-8
+  CPF/CNPJ: 000.000.000-00
+  Telefone: 47 9 9999-9999
   [/CDC_VIACREDI]
   ```
 
