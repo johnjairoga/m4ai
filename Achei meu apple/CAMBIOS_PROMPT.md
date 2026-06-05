@@ -586,3 +586,53 @@ Declarada como PRIORIDADE ABSOLUTA sobre qualquer instrução de insistência em
 - **Garante:** Qualquer sinal de encerramento ou impossibilidade de envio → humano acionado
 
 ---
+
+## Mudança #10 - Template de preenchimento para formulário Viacredi (CDC)
+
+**Data:** 05/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.1.9
+**Solicitante:** Cliente
+
+### Problema identificado
+Ao solicitar os dados para simulação Viacredi, a IA enviava o formulário com campos em formato de lista com marcadores (▪️). O cliente respondia enviando os valores como números soltos em mensagens separadas (sem rótulos), impossibilitando a IA de associar cada valor ao campo correto.
+
+**Exemplo do problema:**
+- IA pedia: `▪️Numero da conta:` / `▪️CPF/CNPJ:` / `▪️Telefone:`
+- Cliente respondia com: `1322.444-1` / `04350694200` / `47997031615` (sem labels, sem formato)
+
+### Solução
+Substituído o formato de lista por um **template copy-paste** que o cliente pode copiar, colar no chat e preencher diretamente com os dados. Os campos ficam com os rótulos visíveis na resposta do cliente, permitindo que a IA identifique cada valor corretamente.
+
+### Formato anterior
+```
+PARA SIMULAÇÃO PRECISO DOS DADOS ABAIXO:
+▪️Numero da conta:
+▪️CPF/CNPJ:
+▪️Telefone:
+```
+
+### Formato novo
+```
+PARA SIMULAÇÃO PRECISO DOS DADOS ABAIXO:
+
+👇 *Copie o modelo abaixo, cole aqui e preencha com seus dados:*
+
+Numero da conta: 
+CPF/CNPJ: 
+Telefone: 
+```
+
+### Arquivos afetados
+- `achei meu Apple_v1.1.9.md` (criado a partir de v1.1.8 — não modifica `achei meu Apple.md`)
+
+### Validação
+✅ Template com rótulos visíveis → IA consegue mapear cada valor ao campo correto  
+✅ Instrução "Copie o modelo abaixo" deixa claro o que o cliente deve fazer  
+✅ Bloco `[CDC_VIACREDI]` preservado intacto  
+
+### Impacto
+- **Elimina:** Dados enviados sem rótulos / fora de contexto
+- **Melhora:** Experiência do cliente — formato simples e intuitivo para preenchimento
+
+---
