@@ -333,3 +333,256 @@ Inserido entre passo 2 (capacidade) e passo 3 (calcular):
 - **Alinha:** Fluxo VBT também passa a incluir qualificação de modalidade antes do cálculo
 
 ---
+
+## Mudança #6 - Promoções Redirect + VBT Múltiplos Modelos
+
+**Data:** 05/06/2026  
+**Status:** ✅ EXECUTADO  
+**Versão:** v1.1.5  
+**Solicitante:** Cliente (sincronização de ajustes feitos por colega)
+
+### Descrição
+Três alterações sincronizadas da versão do colega para a versão do sistema:
+
+1. Seção "Referências a Stories/Posts do Instagram" substituída por nova seção "Promoções / Ofertas - Redirecionamento Obrigatório"
+2. Seção "Modelo de interesse (VBT)" atualizada para suportar múltiplos modelos na comparação
+3. Regra "Apresente apenas 1 aparelho em VBT" substituída pela nova seção "Múltiplos modelos na troca (comparação)"
+
+### Detalhes das Mudanças
+
+#### 1. Promoções — Redirecionamento Obrigatório (substitui seção Instagram)
+```
+ANTES: Seção focada em Instagram (stories, posts, reels) — pedia print ao cliente
+AGORA: Qualquer menção a promoção/oferta/desconto → redirecionar com frase exata:
+"Que ótimo que você se interessou pela nossa promoção! 😊 Vou te transferir para um de nossos
+atendentes que vai poder te passar todos os detalhes dessa promoção."
+
+Regras adicionais:
+- NÃO pedir print
+- NÃO tentar adivinhar a promoção
+- NÃO explicar condições
+- NÃO alterar o texto da frase (detecção de keyword depende das palavras exatas)
+- Enviar em única mensagem, sem asteriscos
+```
+
+#### 2. Modelo de interesse VBT — Suporte a múltiplos modelos
+```
+ADICIONADO novo bullet na seção "Modelo de interesse (antes de calcular — OBRIGATÓRIO)":
+"Se o cliente citar mais de um modelo para comparar (ex.: '16 ou 17', 'me passa os dois'):
+ isso é permitido — siga o fluxo de múltiplos orçamentos VBT. Não force a escolha de um só."
+
+ATUALIZADO bullet "capacidade genérica":
+ANTES: "abre exceção à regra de apresentar apenas 1 aparelho em VBT"
+AGORA: "um bloco de orçamento VBT por capacidade (respeitando o limite de 3 por resposta)"
+```
+
+#### 3. Nova seção — Múltiplos modelos na troca (comparação)
+```
+ANTES: "⚠️ Apresente apenas 1 aparelho desejado em VBT. Se em dúvida entre modelos, peça que defina UM."
+AGORA: Seção completa "Múltiplos modelos na troca (comparação)":
+- Quando cliente pedir comparação (ex.: "me passa os dois", "16 ou 17"): NÃO recuse — calcule e apresente 1 orçamento VBT por modelo
+- Fluxo: analise_vbt uma única vez → para cada modelo repita PASSOSs 3-5 → 1 bloco [ORÇAMENTO] por modelo
+- Limite: máximo 3 modelos por resposta
+- Se cliente não pediu comparação: pode perguntar qual prefere; se pediu explicitamente: apresente todos (até 3)
+```
+
+### Arquivos Afetados
+- `achei meu Apple_v1.1.5.md` (criado — não modifica `achei meu Apple.md`)
+
+### Validação
+✅ Seção Instagram removida e substituída pela seção de Promoções com frase obrigatória exata  
+✅ Frase de redirecionamento sem asteriscos, enviada em mensagem única  
+✅ Novo bullet de múltiplos modelos adicionado na seção "Modelo de interesse" do VBT  
+✅ Bullet "capacidade genérica" atualizado com linguagem alinhada ao novo fluxo  
+✅ Regra "apenas 1 aparelho" substituída pela nova seção "Múltiplos modelos na troca"  
+✅ Limite de 3 modelos por resposta documentado  
+✅ Tudo em português do Brasil  
+
+### Impacto
+- **Melhora:** Redirecionamento de promoções mais robusto — cobre qualquer gatilho (não só Instagram)
+- **Elimina:** Fricção no fluxo de promoções (não pede mais print desnecessário)
+- **Aumenta:** Flexibilidade no VBT — cliente pode comparar modelos sem ser forçado a escolher um
+- **Alinha:** Comportamento do sistema com a versão já em uso pela equipe
+
+---
+
+## Mudança #7 - Novo Script de Negociação (Desconto / Melhora de Preço)
+
+**Data:** 05/06/2026  
+**Status:** ✅ EXECUTADO  
+**Versão:** v1.1.6  
+**Solicitante:** Cliente
+
+### Descrição
+Substituição do script de negociação quando o cliente pede desconto ou pergunta se o valor à vista pode melhorar.
+
+### Mudança
+
+#### Antes (script antigo)
+```
+Quero muito poder fechar com voce, por isso vou ver se consigo melhorar ainda mais, mas como podes ver o valor está super justo e alinhado à qualidade e total procedencia. Eu sei que preço é importante mas não é tudo.
+
+Saiba que aqui cada centavo será um investimento em um produto que voce terá por muito tempo, sem falar em todo suporte e pós venda totalmente diferenciado.
+
+Consigo dar a película de PRESENTE pra você, sem contar o restante dos acessórios que já acompanham.
+
+O que acha? Boraaa garantir essa oportunidade incrivel?
+```
+*(Cliente insistindo em desconto → redirecionar para "setor responsável")*
+
+#### Depois (novo script)
+```
+[nome do cliente] Entendo perfeitamente sua intenção de pagar à vista. O valor que passei já é nossa condição para pagamento à vista.
+
+De toda forma, tenho muito interesse em fechar essa negociação com você e proporcionar a melhor experiência Apple possível, sempre buscando um preço justo.
+
+Me permita verificar com meu gerente se consigo uma condição ainda melhor para você. Irei te transferir para um vendedor te passar a melhor proposta
+```
+
+### Regras adicionadas
+- Substitui `[nome do cliente]` pelo nome real do lead; se não souber, omite e começa em "Entendo perfeitamente"
+- Enviar em mensagem única, texto corrido, sem asteriscos
+- Redirecionamento já está implícito na frase — não aguardar confirmação
+
+### Arquivos Afetados
+- `achei meu Apple_v1.1.6.md` (criado — não modifica `achei meu Apple.md`)
+
+### Validação
+✅ Novo script reconhece a intenção de pagamento à vista do cliente  
+✅ Mantém tom de interesse genuíno em fechar o negócio  
+✅ Transfere ao vendedor/gerente diretamente (sem tentar reter com brindes primeiro)  
+✅ Texto corrido sem asteriscos (evita quebra de formatação no WhatsApp)  
+✅ Regra clara para o caso em que o nome do cliente não é conhecido  
+
+### Impacto
+- **Melhora:** Tom mais empático e profissional na negociação de preço
+- **Simplifica:** Fluxo direto para vendedor sem tentar reter com película primeiro
+- **Padroniza:** Resposta consistente para qualquer pedido de desconto ou melhora de valor à vista
+
+---
+
+## Mudança #8 - Qualificação Comercial de Troca (PASSO 2.5)
+
+**Data:** 05/06/2026  
+**Status:** ✅ EXECUTADO  
+**Versão:** v1.1.7  
+**Solicitante:** Cliente
+
+### Problema identificado
+A IA apresentava preços e condições de parcelamento sem investigar previamente se o cliente possui aparelho para troca/entrada, gerando risco de perda de venda por objeção de valor/parcela alta quando o cliente poderia ter usado um dispositivo como entrada.
+
+**Caso real:** Cliente pediu iPhone 17 Pro Max 512GB → IA passou o valor e montou parcelamento corretamente → cliente disse que a parcela ficou alta → descobriu-se manualmente que ele tinha um iPhone 14 Pro Max 128GB que poderia ter sido usado como entrada.
+
+### Solução
+Adição do **PASSO 2.5 — Pergunta Obrigatória de Troca** no fluxo de vendas, com interceptor no início do PASSO 2 que bloqueia qualquer ação de ESTOQUE até que o PASSO 2.5 seja executado.
+
+### Regra
+**REGRA ABSOLUTA:** Assim que o cliente menciona um modelo de interesse, a pergunta de troca é disparada como **PRIMEIRA AÇÃO** — antes de qualquer consulta de ESTOQUE ou apresentação de orçamento.
+
+**Únicas exceções:**
+- Cliente já está no fluxo VBT (formulário enviado ou aparelho de troca já mencionado)
+- Esta pergunta já foi feita nesta conversa
+
+### Fluxo
+
+**Pergunta obrigatória** (texto corrido, uma única mensagem):
+```
+"Antes de te passar as melhores opções 😊 você já usa iPhone atualmente ou seria o primeiro?
+Pergunto porque também pegamos aparelho na troca e isso pode ajudar bastante no valor da entrada e das parcelas."
+```
+
+**Se SIM (tem aparelho):**
+- Modelo já mencionado no histórico → "Você gostaria de usar ele como entrada na troca?"
+- Modelo ainda não mencionado → "Que modelo você usa atualmente? Quero ver se conseguimos encaixá-lo como entrada na troca pra ajudar no valor 😊" → depois → "Você gostaria de usar ele como entrada na troca?"
+- Resposta SIM → fluxo VBT
+- Resposta NÃO → continua PASSO 3 normalmente
+
+**Se NÃO (primeiro iPhone / não tem aparelho):** continua PASSO 3 normalmente.
+
+### Outras alterações incluídas
+- Interceptor adicionado no início do PASSO 2, antes de todos os ramos, para impedir curto-circuito direto ao ESTOQUE.
+- Regra "DEVE consultar ESTOQUE imediatamente" atualizada com exceção explícita para o PASSO 2.5.
+
+### Arquivos Afetados
+- `achei meu Apple_v1.1.7.md` (criado — não modifica `achei meu Apple.md`)
+
+### Validação
+✅ Pergunta obrigatória declarada como REGRA ABSOLUTA — sem condições extras  
+✅ Apenas 2 exceções simples e objetivas  
+✅ Interceptor no PASSO 2 impede curto-circuito para ESTOQUE  
+✅ Sub-passos respeitam a regra UMA PERGUNTA POR VEZ  
+✅ Não força troca — se cliente recusa, fluxo continua normalmente  
+✅ Tudo em português do Brasil  
+
+### Impacto
+- **Previne:** Perda de vendas por parcelas altas quando o cliente tem um aparelho que poderia reduzir o valor
+- **Aumenta:** Detecção proativa de oportunidades VBT no início do fluxo
+- **Melhora:** Experiência do cliente — a proposta apresentada já considera a realidade comercial dele
+
+---
+
+## Mudança #9 - Redirecionamento quando cliente não consegue enviar foto/vídeo (VBT)
+
+**Data:** 05/06/2026  
+**Status:** ✅ EXECUTADO  
+**Versão:** v1.1.8  
+**Solicitante:** Cliente
+
+### Problema identificado
+Quando a triagem VBT identifica defeito ou peça trocada e a IA pede foto/vídeo, se o cliente responde que não consegue enviar nesse momento (ex.: "não tenho outro cel"), a IA não redirecionava para um humano. Ficava tentando alternativas (ex.: "você consegue vir à loja?") sem acionar o time interno, resultando em conversas abandonadas sem handoff.
+
+**Caso real (screenshot):** Cliente (Luciene) informou troca do vidro da câmera → IA pediu foto/vídeo → cliente disse "não tenho outro cel" → IA perguntou se ela conseguia ir à loja → cliente disse "Deixa então / Quando der vou na loja / Obrigada" — sem nenhum redirecionamento ao time.
+
+### Solução
+Adicionada **regra 3.5** na seção de Triagem VBT e entrada correspondente nos Redirecionamentos: quando o cliente afirma que **não consegue enviar** a mídia nesse momento → redirecionar imediatamente para o setor responsável.
+
+### Frase obrigatória (adaptar só o nome)
+```
+"Entendido, [nome]! Sem problema. Vou encaminhar você para o setor responsável
+e eles entrarão em contato para dar sequência na avaliação 😊"
+```
+
+### Gatilhos da nova regra (lista completa)
+- "não tenho outro cel", "não tenho celular pra fotografar"
+- "não consigo tirar foto agora", "não tenho como enviar", "não consigo agora"
+- "mais tarde eu mando", "vou mandar mais tarde", "mando depois"
+- "agora não dá", "agora não consigo", "não tenho como agora"
+- "tô no trabalho", "estou ocupado(a) agora"
+- "Deixa então", "obrigada" / "obrigado" (em contexto de encerramento)
+- "quando der vou na loja", "prefiro ir lá pessoalmente", "vou lá depois"
+
+### O que NÃO fazer (proibido)
+- NÃO pedir para o cliente vir à loja como alternativa
+- NÃO insistir nas fotos ou sugerir outra forma de envio
+- NÃO continuar o fluxo VBT
+
+### Escopo coberto
+- Triagem VBT (defeito/peça trocada) → regra 3.5
+- Fotos de marcas de uso (VALIDAÇÃO DE FOTOS) → exceção explícita adicionada
+- Referência geral na seção Redirecionamentos
+
+### Prioridade
+Declarada como PRIORIDADE ABSOLUTA sobre qualquer instrução de insistência em fotos ou sugestão de ir à loja.
+
+### Diferença entre esta regra e o Fallback existente (REGRA CRÍTICA #7)
+| | Fallback (REGRA #7) | Nova regra 3.5 |
+|---|---|---|
+| Gatilho | Problema técnico no envio (erro, não chegou) | Cliente não tem meios / não vai enviar agora |
+| Exemplos | "foi a imagem?", "deu erro" | "não tenho outro cel", "Deixa então" |
+
+### Arquivos afetados
+- `achei meu Apple_v1.1.8.md` (modificado — não modifica `achei meu Apple.md`)
+
+### Validação
+✅ Regra 3.5 com prioridade absoluta declarada  
+✅ Lista de gatilhos expandida com frases reais do atendimento  
+✅ Escopo elevado para cobrir fotos de marcas de uso também  
+✅ Redirecionamentos atualizado com referência cruzada à regra 3.5  
+✅ Proibições explícitas (não sugerir loja, não insistir, não continuar VBT)  
+✅ Palavra-chave "setor responsável" preservada  
+
+### Impacto
+- **Elimina:** Conversas abandonadas sem handoff quando cliente não pode enviar mídia
+- **Garante:** Qualquer sinal de encerramento ou impossibilidade de envio → humano acionado
+
+---
