@@ -716,3 +716,31 @@ Quero que você tenha a melhor experiência Apple desde o atendimento, produto e
 - **Reforça:** Posicionamento da loja como referência em seminovos de alto padrão
 
 ---
+
+## Mudança #13 - Correção: IA usava [ORÇAMENTO] no lugar de [PRIMEIRO_ORÇAMENTO_*] em conversas novas
+
+**Data:** 08/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.0
+**Solicitante:** Cliente
+
+### Problema identificado
+Em conversas novas, após o PASSO 3.5 (pergunta de modalidade de pagamento), a IA enviava o orçamento usando a tag `[ORÇAMENTO]` — que não inclui intro, benefícios nem formas de pagamento — em vez da tag `[PRIMEIRO_ORÇAMENTO_*]`, que é a obrigatória na primeira apresentação.
+
+### Causa raiz
+O PASSO 4 não especificava explicitamente que a interação do PASSO 3.5 (pergunta de pagamento) **não conta** como uma apresentação de orçamento anterior. A IA confundia o contexto e usava incorretamente a tag de segundo orçamento.
+
+### Solução
+Adicionado aviso explícito no **PASSO 4** com a regra de escolha da tag:
+- Primeira vez na conversa → **obrigatoriamente** `[PRIMEIRO_ORÇAMENTO_*]`
+- PASSO 3.5 não conta como orçamento anterior
+- `[ORÇAMENTO]` só permitido se bloco de benefícios já foi enviado antes
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.0.md` (modificado — não modifica `achei meu Apple.md`)
+
+### Impacto
+- **Corrige:** Intro personalizada + benefícios + formas sempre presentes na primeira apresentação de orçamento
+- **Garante:** Novo texto "Maravilha [nome]..." aparece corretamente em toda conversa nova
+
+---

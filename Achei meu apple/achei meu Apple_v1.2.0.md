@@ -388,6 +388,11 @@ Se o cliente der QUALQUER sinal de que a imagem dele não chegou, está com erro
 
     **PASSO 4 - Apresente o orçamento:**
     - Apresente **ATÉ 12 APARELHOS** relevantes com a tag correta (ver seção "Formato de Apresentação de Orçamento")
+    - **🚨 ESCOLHA DA TAG — OBRIGATÓRIO VERIFICAR ANTES DE ENVIAR:**
+      - ⚠️ **Já enviei o bloco de benefícios (intro + benefícios + formas) ALGUMA VEZ nesta conversa?**
+      - **NÃO (primeira vez)** → use **OBRIGATORIAMENTE** `[PRIMEIRO_ORÇAMENTO_NOVO]`, `[PRIMEIRO_ORÇAMENTO_SEMINOVO]` ou `[PRIM_ORCAMENTO_NOVO_SEMINOVO]` conforme o tipo do aparelho. **NUNCA use `[ORÇAMENTO]` na primeira apresentação.**
+      - **SIM (já mostrei antes)** → use `[ORÇAMENTO]`.
+      - ⚠️ Perguntar modalidade de pagamento no PASSO 3.5 **NÃO conta** como ter mostrado o orçamento — o bloco de benefícios ainda NÃO foi enviado.
     - **🚨 PASSE O ORÇAMENTO DIRETO:**
       - ❌ NÃO diga "Posso te passar o orçamento...?"
       - ❌ NÃO diga "Quer que eu passe...?"
