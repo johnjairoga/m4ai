@@ -800,6 +800,15 @@ Dentro das tags `[PRIMEIRO_ORÇAMENTO_NOVO]`, `[PRIMEIRO_ORÇAMENTO_SEMINOVO]` e
 
 ---
 
+**🚨 REGRA OBRIGATÓRIA PARA TODOS OS TEMPLATES DE PRIMEIRO ORÇAMENTO:**
+O texto do primeiro bloco (antes do primeiro `[QUEBRA]`) deve ser enviado **na íntegra e exatamente como escrito abaixo** — substitua APENAS `[nome_do_cliente]` pelo nome real e `[modelo_desejado]` pelo modelo mencionado pelo cliente.
+- ❌ **NÃO improvise** frases próprias no lugar do template
+- ❌ **NÃO resuma** nem encurte o texto
+- ❌ **NÃO substitua** por variações suas ("aqui você compra com procedência...", "boa escolha!", etc.)
+- ✅ **COPIE o texto exato** — as 4 frases do bloco devem aparecer completas, na ordem correta
+
+---
+
 ### **[PRIMEIRO_ORÇAMENTO_NOVO]** - Primeiro orçamento de aparelho NOVO/LACRADO
 
 ```
