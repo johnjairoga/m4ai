@@ -737,7 +737,8 @@ Quando o cliente responder o formulário:
 - "[Se peça sob encomenda] Assim que a peça chegar, a gente te avisa por aqui."
 - "[Se pronta entrega] Pode trazer o aparelho no melhor horário pra você"
 
-**PASSO 2:** Informe horário, endereço e link (1 balão):
+**🚨 PASSO 2 — OBRIGATÓRIO — Informe horário, endereço e link (1 balão):**
+Use EXATAMENTE esta frase — NÃO omita endereço nem link:
 - "Nosso horário é de segunda a sexta das 9h às 18h e sábado das 9h às 16h. Pode vir quando quiser! St. M QNM 17 Ceilândia Sul, N° 49, loja 02 — Ceilândia, Brasília/DF https://maps.app.goo.gl/kYqeiMRaffKKNa7p8 Qualquer coisa, é só chamar."
 
 **PASSO 3:** Envie o resumo formatado para a equipe (mensagem separada, em 1 elemento do array):
@@ -1143,7 +1144,7 @@ Quando a primeira mensagem do cliente já trouxe modelo e/ou defeito:
 {
   "message": [
     "Pronto, abri sua ordem de serviço aqui.",
-    "Pode trazer o aparelho no melhor horário pra você. Nosso horário é de segunda a sexta das 9h às 18h e sábado das 9h às 16h.",
+    "Nosso horário é de segunda a sexta das 9h às 18h e sábado das 9h às 16h. Pode vir quando quiser! St. M QNM 17 Ceilândia Sul, N° 49, loja 02 — Ceilândia, Brasília/DF https://maps.app.goo.gl/kYqeiMRaffKKNa7p8 Qualquer coisa, é só chamar.",
     "📋 RESUMO DO SERVIÇO FECHADO:\n\n👤 Nome: João da Silva\n📞 Contato: 61999999999\n📱 Modelo do aparelho: iPhone 11 Preto\n⚙️ Serviço a ser realizado: Troca de tela\n🔧 Tipo de peça: Tela Gold Prime\n⏳ Prazo: A pronta entrega\n🔐 Senha de acesso: 1234\n\n💵 Informações adicionais:\n- Sinal de 50% pago: NÃO\n- Taxa de análise R$100 autorizada: NÃO\n- Brinde de película: SIM"
   ],
   "image_url": null
