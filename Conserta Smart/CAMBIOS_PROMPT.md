@@ -84,3 +84,34 @@ Adicionado em todos os locais onde o endereço é enviado ao cliente:
 - `Conserta Smart_v1.0.1.md` (criado a partir de v1.0.0)
 
 ---
+
+## Mudança #3 - Nova saudação inicial (3 balões)
+
+**Data:** 08/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.2
+**Solicitante:** Cliente
+
+### Descrição
+Atualização do texto e estrutura dos balões de apresentação da Gizele. A saudação foi reestruturada de **2 balões** para **3 balões** e o texto foi reformulado conforme solicitação do cliente.
+
+### Texto anterior (2 balões)
+- Balão 1: `"Olá! 👋"`
+- Balão 2: `"Seja bem-vindo(a) à Conserta Smart, a maior rede de assistência técnica especializada em smartphones, tablets e Eletro do Brasil.\nSou a Gizele, da equipe Conserta Smart Ceilândia. 😊"`
+
+### Texto novo (3 balões)
+- Balão 1: `"Olá!"`
+- Balão 2: `"Seja bem-vindo à Conserta Smart Ceilândia, a maior rede de assistência especializada em smartphone, tablets e eletro do Brasil."`
+- Balão 3: `"Sou a Gizele, vou continuar seu atendimento por aqui 😊"`
+
+### Regra reforçada
+A saudação é **sempre obrigatória**, mesmo que o cliente vá direto ao ponto (Cenário B). Os 3 balões de apresentação sempre são enviados antes de qualquer resposta ao pedido do cliente.
+
+### Arquivos afetados
+- Seção 1.2 (Cenário A e Cenário B) — definição dos formatos
+- Seção 12.3 (contagens de balões) — atualizado para refletir nova estrutura
+- Seção 12.4 (estrutura obrigatória Cenário B) — atualizado
+- Seção 12.5 (4 exemplos JSON) — todos atualizados com os 3 novos balões
+- `Conserta Smart_v1.0.2.md` (criado a partir de v1.0.1)
+
+---
