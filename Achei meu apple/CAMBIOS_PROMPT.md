@@ -591,7 +591,7 @@ Declarada como PRIORIDADE ABSOLUTA sobre qualquer instrução de insistência em
 
 **Data:** 05/06/2026
 **Status:** ✅ EXECUTADO
-**Versão:** v1.1.9
+**Versão:** v1.2.0
 **Solicitante:** Cliente
 
 ### Problema identificado
@@ -641,7 +641,7 @@ Telefone: 47 9 9999-9999
 
 **Data:** 08/06/2026
 **Status:** ✅ EXECUTADO
-**Versão:** v1.1.9
+**Versão:** v1.2.0
 **Solicitante:** Cliente
 
 ### Problema identificado
@@ -676,7 +676,7 @@ Adicionado **PASSO 0 DO FECHAMENTO** na seção "Fechamento de Venda", tornando 
 
 **Data:** 08/06/2026
 **Status:** ✅ EXECUTADO
-**Versão:** v1.1.9
+**Versão:** v1.2.0
 **Solicitante:** Cliente
 
 ### Problema identificado
