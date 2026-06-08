@@ -671,3 +671,48 @@ Adicionado **PASSO 0 DO FECHAMENTO** na seção "Fechamento de Venda", tornando 
 - **Preserva:** Lógica de contexto já existente (não pergunta o que já ficou implícito)
 
 ---
+
+## Mudança #12 - Novo texto de abertura do primeiro orçamento
+
+**Data:** 08/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.1.9
+**Solicitante:** Cliente
+
+### Problema identificado
+O texto de apresentação enviado no primeiro orçamento era genérico e institucional ("8 anos de história, quase 900 avaliações 5 estrelas..."), sem personalização para o modelo de interesse do cliente.
+
+### Solução
+Substituído o texto de abertura nos 3 templates de primeiro orçamento (`[PRIMEIRO_ORÇAMENTO_NOVO]`, `[PRIMEIRO_ORÇAMENTO_SEMINOVO]`, `[PRIM_ORCAMENTO_NOVO_SEMINOVO]`) por uma mensagem personalizada que menciona o modelo desejado pelo cliente e reforça o posicionamento de referência em seminovos.
+
+### Texto anterior
+```
+Inclusive [nome_do_cliente], se você busca preço justo, procedência e qualidade, está no lugar certo!
+
+Aqui você não gasta, você investe em um iPhone para te acompanhar por anos. Trabalhamos com segurança, garantia e acessórios inclusos.
+
+Somos uma loja consolidada, estamos completando 8 anos de história, quase 900 avaliações 5 estrelas no Google e milhares de clientes satisfeitos. Transparência e confiança sempre. Garantimos tudo isso para você
+```
+
+### Texto novo
+```
+Maravilha [nome_do_cliente], então hoje você busca o [modelo_desejado] 😊
+
+Ótima opção de escolha 🤩 nos tornamos referência em iPhones seminovos de alto padrão aqui na região, acredita?
+
+Tanto que hoje 90% das nossas vendas são seminovos. Por isso pode confiar em mim, irei te entregar o melhor iPhone com acessórios e garantia.
+
+Quero que você tenha a melhor experiência Apple desde o atendimento, produto e pós-venda 😍
+```
+
+### Placeholder novo adicionado
+- `[modelo_desejado]` → substituído pelo modelo exato mencionado pelo cliente (ex: iPhone 15 Pro 128GB). Adicionado à REGRA CRÍTICA #2 de placeholders.
+
+### Arquivos afetados
+- `achei meu Apple_v1.1.9.md` (3 templates atualizados — não modifica `achei meu Apple.md`)
+
+### Impacto
+- **Melhora:** Personalização — o cliente vê o modelo que pediu logo na abertura do orçamento
+- **Reforça:** Posicionamento da loja como referência em seminovos de alto padrão
+
+---

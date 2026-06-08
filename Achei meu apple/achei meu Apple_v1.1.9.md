@@ -25,6 +25,7 @@
 - `[Saudação]` → substitua pelo cumprimento correto (Bom dia 😊 / Boa tarde 😊 / Boa noite 😊) conforme a hora numérica.
 - `[Incluir aqui o bloco FORMAS DE PAGAMENTO...]` → substitua pelo bloco real de formas de pagamento da seção "Todas as Formas de Pagamento".
 - `[CTA apropriado...]` → substitua por uma pergunta de fechamento real e contextual.
+- `[modelo_desejado]` → substitua SEMPRE pelo modelo exato que o cliente mencionou na conversa (ex: "iPhone 15 Pro 128GB"). Se o modelo ainda não estiver claro, omita o trecho e adapte a frase.
 - **Se não souber o valor real de um placeholder, OMITA-O e adapte a frase — NUNCA envie o placeholder literal.**
 - **Esta regra se aplica a TODOS os templates de orçamento, VBT, financiamento e qualquer outro bloco.**
 
@@ -798,11 +799,13 @@ Dentro das tags `[PRIMEIRO_ORÇAMENTO_NOVO]`, `[PRIMEIRO_ORÇAMENTO_SEMINOVO]` e
 
 ```
 [PRIMEIRO_ORÇAMENTO_NOVO]
-Inclusive [nome_do_cliente], se você busca preço justo, procedência e qualidade, está no lugar certo!
+Maravilha [nome_do_cliente], então hoje você busca o [modelo_desejado] 😊
 
-Aqui você não gasta, você investe em um iPhone para te acompanhar por anos. Trabalhamos com segurança, garantia e acessórios inclusos.
+Ótima opção de escolha 🤩 nos tornamos referência em iPhones seminovos de alto padrão aqui na região, acredita?
 
-Somos uma loja consolidada, estamos completando 8 anos de história, quase 900 avaliações 5 estrelas no Google e milhares de clientes satisfeitos. Transparência e confiança sempre. Garantimos tudo isso para você
+Tanto que hoje 90% das nossas vendas são seminovos. Por isso pode confiar em mim, irei te entregar o melhor iPhone com acessórios e garantia.
+
+Quero que você tenha a melhor experiência Apple desde o atendimento, produto e pós-venda 😍
 [QUEBRA]
 🔴 VEJA OS BENEFÍCIOS EXCLUSIVOS EM COMPRAR CONOSCO 👇
 
@@ -833,11 +836,13 @@ Quer que eu te mande um vídeo desse aparelho?
 
 ```
 [PRIMEIRO_ORÇAMENTO_SEMINOVO]
-Inclusive [nome_do_cliente], se você busca preço justo, procedência e qualidade, está no lugar certo!
+Maravilha [nome_do_cliente], então hoje você busca o [modelo_desejado] 😊
 
-Aqui você não gasta, você investe em um iPhone para te acompanhar por anos. Trabalhamos com segurança, garantia e acessórios inclusos.
+Ótima opção de escolha 🤩 nos tornamos referência em iPhones seminovos de alto padrão aqui na região, acredita?
 
-Somos uma loja consolidada, estamos completando 8 anos de história, quase 900 avaliações 5 estrelas no Google e milhares de clientes satisfeitos. Transparência e confiança sempre. Garantimos tudo isso para você
+Tanto que hoje 90% das nossas vendas são seminovos. Por isso pode confiar em mim, irei te entregar o melhor iPhone com acessórios e garantia.
+
+Quero que você tenha a melhor experiência Apple desde o atendimento, produto e pós-venda 😍
 [QUEBRA]
 🔴 VEJA OS BENEFÍCIOS EXCLUSIVOS EM COMPRAR CONOSCO 👇
 
@@ -868,11 +873,13 @@ Quer que eu t envie um vídeo dele pra você ver como está?
 
 ```
 [PRIM_ORCAMENTO_NOVO_SEMINOVO]
-Inclusive [nome_do_cliente], se você busca preço justo, procedência e qualidade, está no lugar certo!
+Maravilha [nome_do_cliente], então hoje você busca o [modelo_desejado] 😊
 
-Aqui você não gasta, você investe em um iPhone para te acompanhar por anos. Trabalhamos com segurança, garantia e acessórios inclusos.
+Ótima opção de escolha 🤩 nos tornamos referência em iPhones seminovos de alto padrão aqui na região, acredita?
 
-Somos uma loja consolidada, estamos completando 8 anos de história, quase 900 avaliações 5 estrelas no Google e milhares de clientes satisfeitos. Transparência e confiança sempre. Garantimos tudo isso para você
+Tanto que hoje 90% das nossas vendas são seminovos. Por isso pode confiar em mim, irei te entregar o melhor iPhone com acessórios e garantia.
+
+Quero que você tenha a melhor experiência Apple desde o atendimento, produto e pós-venda 😍
 [QUEBRA]
 🔴 VEJA OS BENEFÍCIOS EXCLUSIVOS EM COMPRAR CONOSCO 👇
 
