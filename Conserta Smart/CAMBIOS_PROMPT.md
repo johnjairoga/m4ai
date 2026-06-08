@@ -41,3 +41,46 @@ Criação do prompt inicial da atendente virtual Gizele para a Conserta Smart & 
 - `Conserta Smart_v1.0.0.md` — prompt inicial completo
 
 ---
+
+## Mudança #2 - Fluxo mais suave + endereço atualizado + localização
+
+**Data:** 08/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.1
+**Solicitante:** Cliente
+
+### Etapa 1 — Fluxo de OS menos agressivo
+
+**Problema:** A IA estava forçando a abertura de OS imediatamente após o cliente confirmar interesse, sem antes convidá-lo a visitar a loja.
+
+**Solução:** Adicionado novo **passo 4.5** no fluxo de atendimento e nova **seção 6.11**. Após confirmação de interesse, a IA agora:
+1. Convida o cliente a visitar a loja
+2. Informa horários de funcionamento + endereço + link do Maps
+3. Oferece o pré-registro (OS) como opção opcional — sem pressão
+
+**Regras da nova seção 6.11:**
+- NUNCA enviar formulário de OS antes de convidar o cliente à loja
+- Pré-registro é opcional — NÃO forçar
+- Sempre incluir horários + endereço + link no momento do convite
+
+### Etapa 2 — Endereço atualizado
+
+**Endereço anterior:** `QNM 17 Conjunto A, 49, loja 2 — Ceilândia/DF`
+**Endereço novo:** `St. M QNM 17 Ceilândia Sul, N° 49, loja 02 — Ceilândia, Brasília - DF, 72215-171`
+
+Horários confirmados iguais ao Google Maps — sem alteração necessária.
+
+### Etapa 3 — Link Google Maps adicionado
+
+**Link:** https://maps.app.goo.gl/kYqeiMRaffKKNa7p8
+
+Adicionado em todos os locais onde o endereço é enviado ao cliente:
+- Seção 3.1 (definição da loja)
+- Seção 6.5 (convite presencial quando cliente recusa sinal)
+- Seção 6.11 (novo convite à loja)
+- Seção 9.6 PASSO 2 (fechamento da OS)
+
+### Arquivos afetados
+- `Conserta Smart_v1.0.1.md` (criado a partir de v1.0.0)
+
+---
