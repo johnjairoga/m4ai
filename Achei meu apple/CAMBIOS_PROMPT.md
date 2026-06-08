@@ -636,3 +636,38 @@ Telefone: 47 9 9999-9999
 - **Melhora:** Experiência do cliente — formato simples e intuitivo para preenchimento
 
 ---
+
+## Mudança #11 - Pergunta obrigatória de retirada ou entrega no fechamento
+
+**Data:** 08/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.1.9
+**Solicitante:** Cliente
+
+### Problema identificado
+Quando o cliente confirmava interesse em comprar ("vou querer", "quero esse", etc.), a IA não perguntava se o cliente preferia retirar na loja ou receber por entrega. A IA pulava direto para perguntas de dia/horário, omitindo essa qualificação essencial para o fechamento.
+
+### Solução
+Adicionado **PASSO 0 DO FECHAMENTO** na seção "Fechamento de Venda", tornando "retirada ou entrega?" a PRIMEIRA pergunta obrigatória quando o cliente confirma intenção de compra.
+
+### Gatilhos que ativam o PASSO 0
+- "vou querer", "quero esse", "reserva pra mim", "fecha pra mim", "quero comprar", "pode fechar", "vou levar" e qualquer confirmação de intenção de compra.
+
+### Exceções (não perguntar)
+- Cliente já indicou retirada implicitamente: "passo aí", "vou buscar", "vou lá", "vou aí amanhã", "hj a tarde pelas 17h", etc.
+- Cliente já mencionou entrega explicitamente.
+
+### Nova ordem das informações de fechamento
+1. **Retirada na loja ou entrega** ← nova, sempre primeiro
+2. Dia e horário
+3. Unidade da loja (se aplicável)
+4. Forma de pagamento
+
+### Arquivos afetados
+- `achei meu Apple_v1.1.9.md` (modificado — não modifica `achei meu Apple.md`)
+
+### Impacto
+- **Garante:** Qualificação de retirada/entrega no início de todo fechamento
+- **Preserva:** Lógica de contexto já existente (não pergunta o que já ficou implícito)
+
+---
