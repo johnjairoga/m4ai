@@ -744,3 +744,61 @@ Adicionado aviso explícito no **PASSO 4** com a regra de escolha da tag:
 - **Garante:** Novo texto "Maravilha [nome]..." aparece corretamente em toda conversa nova
 
 ---
+
+## Mudança #14 - Linha 13 e Linha 14 completamente descontinuadas como novo + mensagem complemento obrigatória
+
+**Data:** 10/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.1
+**Solicitante:** Cliente
+
+### Problema identificado
+Dois problemas relacionados à disponibilidade dos iPhones 13 e 14:
+
+1. **Tabela de disponibilidade incorreta:** `13` e `14 Plus` estavam listados como "Lacrado e seminovo", quando na realidade toda a linha 13 e toda a linha 14 já não existem mais como novo lacrado pela Apple.
+
+2. **Mensagem errada ao cliente:** Quando o cliente pedia iPhone 13 ou 14 novo e a IA apresentava seminovo, a mensagem dizia "não temos no momento" — dando a entender uma indisponibilidade temporária de estoque, quando a verdade é que a Apple **descontinuou permanentemente** toda a linha como lacrado.
+
+### Solução
+
+#### 1. Tabela de disponibilidade atualizada
+
+| Antes | Depois |
+|---|---|
+| Lacrado e seminovo: 13, 14, 14 Plus, 15... | Lacrado e seminovo: 15, 15 Plus, 16... |
+| Só seminovo: ...12 Pro Max, 13 mini, 13 Pro, 13 Pro Max, 14 Pro, 14 Pro Max... | Só seminovo: ...12 Pro Max, **13, 13 mini, 13 Pro, 13 Pro Max, 14, 14 Plus**, 14 Pro, 14 Pro Max... |
+
+→ Toda a linha 13 e toda a linha 14 passam para "Só seminovo".
+
+#### 2. Complemento contextual obrigatório para linhas 13 e 14
+
+Adicionado **CASO ESPECIAL** dentro da Regra 3 da REGRA CRÍTICA #6:
+
+Quando o cliente pedir qualquer modelo das linhas 13 ou 14 como novo/lacrado, a IA deve enviar OBRIGATORIAMENTE o complemento abaixo ANTES do orçamento seminovo:
+
+```
+"[nome], só um detalhe importante: toda a linha [13/14] da Apple foi descontinuada como novo lacrado — ou seja, não existe mais esse modelo lacrado no mercado, independentemente da loja. Qualquer oferta de iPhone [13/14] como novo lacrado é sinal de golpe ou produto adulterado, então já adianto esse alerta para te proteger 😊 Aqui tenho um seminovo de alto padrão, revisado, com acessórios e garantia, que é exatamente o que você precisa!"
+```
+
+#### 3. Reforço da proibição de linguagem de estoque
+
+Atualizado: ⛔ NUNCA diga **"no momento não temos"** — a razão é que a Apple DESCONTINUOU, não é falta de estoque.
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.1.md` (criado a partir de v1.2.0)
+
+### Validação
+✅ Tabela de disponibilidade corrigida — linha 13 e linha 14 completas em "Só seminovo"
+✅ CASO ESPECIAL adicionado dentro da Regra 3 da REGRA CRÍTICA #6
+✅ Template de mensagem complemento com placeholders `[nome]` e `[13/14]`
+✅ Exemplos da Regra 3 atualizados para incluir 13, 14, 14 Plus
+✅ Proibição de "no momento não temos" reforçada explicitamente
+✅ Tudo em português do Brasil
+
+### Impacto
+- **Corrige:** Tabela que indicava incorretamente que iPhone 13 e 14 Plus poderiam ser lacrados
+- **Melhora:** Contexto dado ao cliente — entende que é descontinuação permanente, não falta de estoque
+- **Protege:** Alerta integrado sobre golpes de iPhone 13/14 lacrado no mercado
+- **Padroniza:** Mensagem complemento obrigatória para toda a linha 13 e linha 14
+
+---

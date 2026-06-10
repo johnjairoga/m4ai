@@ -1,0 +1,74 @@
+---
+description: Versionamento obrigatório de prompts — novo arquivo + registro em CAMBIOS_PROMPT.md a cada ajuste validado
+alwaysApply: true
+---
+
+# Versionamento de Prompts — M4IA
+
+## Regra obrigatória para todo ajuste de prompt
+
+Sempre que um ajuste num prompt for criado e validado com o cliente, **duas ações são obrigatórias**, nesta ordem:
+
+### 1. Criar novo arquivo versionado
+
+- **Nunca editar o arquivo da versão anterior** — ele é imutável
+- Copiar o arquivo mais recente e incrementar a versão no nome
+- Padrão de nomenclatura: `<NomeProjeto>_v<MAJOR>.<MINOR>.<PATCH>.md`
+- Incrementar PATCH para ajustes pontuais (ex.: v1.0.2 → v1.0.3)
+- Incrementar MINOR para novas funcionalidades (ex.: v1.0.x → v1.1.0)
+
+**Exemplo:**
+```
+# Ajuste pontual
+Conserta Smart_v1.0.3.md  →  Conserta Smart_v1.0.4.md
+
+# Nova funcionalidade
+Cell Phone Store_v1.0.1.md  →  Cell Phone Store_v1.1.0.md
+```
+
+### 2. Registrar a mudança em CAMBIOS_PROMPT.md
+
+Cada pasta de projeto tem seu próprio `CAMBIOS_PROMPT.md`. Append da nova entrada no final do arquivo com esta estrutura obrigatória:
+
+```markdown
+## Mudança #N — Título curto descritivo
+
+**Data:** DD/MM/AAAA
+**Status:** ✅ EXECUTADO
+**Versão:** vX.Y.Z
+**Solicitante:** Cliente
+
+### Problema identificado
+<descrever o comportamento errado ou gap, com caso real se disponível>
+
+### Solução
+<descrever o que foi adicionado/alterado e onde (seção, linha ou bloco)>
+
+### Arquivos afetados
+- `NomeProjeto_vX.Y.Z.md` (criado a partir de vX.Y.Z-1)
+
+### Validação
+✅ <item verificado>
+✅ <item verificado>
+
+### Impacto
+- **Previne / Corrige / Melhora / Padroniza:** <descrição>
+
+---
+```
+
+## Projetos ativos
+
+| Pasta | Prompt atual | CAMBIOS_PROMPT.md |
+|---|---|---|
+| `Achei meu apple/` | `achei meu Apple_v1.2.1.md` | ✅ |
+| `Cell phone store/` | `Cell Phone Store_v1.0.1.md` | ✅ |
+| `Conserta Smart/` | `Conserta Smart_v1.0.4.md` | ✅ |
+| `T2H/` | `T2H_v1.0.2.md` | ✅ |
+
+## Proibições
+
+- ❌ Editar diretamente um arquivo de versão anterior
+- ❌ Fazer ajuste no prompt sem criar novo arquivo versionado
+- ❌ Criar novo arquivo sem registrar em CAMBIOS_PROMPT.md
+- ❌ Incrementar versão sem registrar a mudança
