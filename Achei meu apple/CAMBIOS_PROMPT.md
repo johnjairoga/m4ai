@@ -1239,3 +1239,92 @@ A IA perguntava qual cor o cliente preferia ou "tinha em mente" (ex.: "Qual cor 
 - **Corrige:** Conflito entre EXCEÇÃO COR e fluxo de objeção por cor indisponível
 
 ---
+
+## Mudança #27 — Reforço de garantia na pré-venda
+
+**Data:** 17/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.12
+**Solicitante:** Cliente
+
+### Problema identificado
+Cliente pergunta quanto tempo tem de garantia — faltava frase de reforço sobre baixa probabilidade de acionar garantia pela qualidade dos aparelhos.
+
+### Solução
+Nova subseção **Quando o cliente perguntar sobre tempo/duração de garantia (pré-venda)** em *Persuasão e Quebra de Objeções* (após bullet de troca de usado), com gatilhos, respostas por tipo (seminovo/lacrado/sem contexto) e modelo de frase com reforço de qualidade. Exceção adicionada em *Redirecionamentos* para não redirecionar perguntas de duração de garantia na pré-venda.
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.12.md` (criado a partir de v1.2.11)
+
+### Validação
+✅ v1.2.11 preservado intacto — nenhuma edição na versão anterior
+✅ Nova subseção inserida após bullet de negociação de usado, antes de Quebra de Objeção — pesquisar em outra loja
+✅ Exceção em Redirecionamentos após "Qualquer combinação dos assuntos acima"
+✅ Bullets 2517-2526, templates, VBT, ESTOQUE e ORÇAMENTO não alterados
+
+### Impacto
+- **Melhora:** Resposta padronizada com reforço de confiança sobre qualidade dos aparelhos na pré-venda
+- **Previne:** Redirecionamento desnecessário ao vendedor quando cliente pergunta apenas duração da garantia antes da compra
+- **Padroniza:** Distinção clara entre garantia pré-venda vs. acionamento pós-compra
+
+---
+
+## Mudança #28 — Emoji correto para parcelas no cartão
+
+**Data:** 17/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.13
+**Solicitante:** Cliente
+
+### Problema identificado
+Quando o cliente pedia preço parcelado ou no cartão, exemplos e regras usavam **💵** em linhas `Nx de R$`, confundindo com valores PIX/à vista (que devem usar **💵**). Ex.: ❌ `💵 21x de R$ 237,00` em vez de ✅ `💳 21x de R$ 237,00`.
+
+### Solução
+- Nova subseção **Emojis de pagamento (obrigatório)** em *Formato de Apresentação de Orçamento → [ORÇAMENTO]*: **💵** só PIX/dinheiro/à vista; **💳** para cartão/parcelas (`Nx de R$`).
+- Regra de cartão e todos os exemplos de parcelas em *Processo de Pagamento*, *Cálculo de taxas* e *Parcelamento Disponível* atualizados de `💵Nx` para `💳Nx`.
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.13.md` (criado a partir de v1.2.12)
+
+### Validação
+✅ v1.2.12 preservado intacto — nenhuma edição na versão anterior
+✅ Linhas PIX (`💵R$ X.XXX,00 PIX`) e VBT (`💵 Entrada no Pix`) inalteradas
+✅ Todas as ocorrências `💵Nx de R$` em exemplos/regras de cartão corrigidas para `💳`
+✅ Tags, templates, fluxos de pagamento e demais lógica não alterados
+
+### Impacto
+- **Corrige:** Uso de 💵 em parcelas no cartão
+- **Padroniza:** 💵 = PIX/à vista; 💳 = cartão/parcelas
+- **Previne:** Confusão visual entre valor à vista e parcelamento
+
+---
+
+## Mudança #29 — Nova intro do formulário VBT
+
+**Data:** 17/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.14
+**Solicitante:** Cliente
+
+### Problema identificado
+O aviso `⚠️ Por gentileza, mandar as informações solicitadas a baixo por escrito.` dentro do bloco `[VBT]` soava rígido e repetitivo; o cliente pediu uma intro mais natural antes do checklist.
+
+### Solução
+- Removida a linha `⚠️ Por gentileza…` do template e do exemplo em *Envio do Formulário VBT*.
+- Nova **Primeira frase** fixa **fora** do `[VBT]`: *Para eu avaliar o seu aparelho e te mandar as opções que você me pediu, só preciso dessas informações abaixo:*
+- Bloco `[VBT]` passa a iniciar direto no primeiro item ▫️; regras #3–4 de formatação atualizadas para a estrutura de 3 partes (Primeira frase → formulário → última frase).
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.14.md` (criado a partir de v1.2.13)
+
+### Validação
+✅ v1.2.13 preservado intacto — nenhuma edição na versão anterior
+✅ Zero ocorrências de `Por gentileza, mandar as informações solicitadas` em v1.2.14
+✅ Itens ▫️ do checklist, tags `[VBT]`, validação, fotos, `analise_vbt`, ESTOQUE, Calculator e demais seções inalterados
+
+### Impacto
+- **Melhora:** Tom mais acolhedor na abertura do formulário VBT
+- **Padroniza:** Intro fixa antes do checklist, fora do bloco `[VBT]`
+- **Previne:** Tom de cobrança com aviso ⚠️ redundante
+
+---

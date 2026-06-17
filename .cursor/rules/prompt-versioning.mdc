@@ -62,7 +62,7 @@ Cada pasta de projeto tem seu próprio `CAMBIOS_PROMPT.md`. Append da nova entra
 
 | Pasta | Prompt atual | CAMBIOS_PROMPT.md |
 |---|---|---|
-| `Achei meu apple/` | `achei meu Apple_v1.2.11.md` | ✅ |
+| `Achei meu apple/` | `achei meu Apple_v1.2.14.md` | ✅ |
 | `Cell phone store/` | `Cell Phone Store_v1.0.1.md` | ✅ |
 | `Conserta Smart/` | `Conserta Smart_v1.0.4.md` | ✅ |
 | `Francivaldo phones/` | `Francivaldo Phones_v1.0.1.md` | ✅ |
@@ -70,7 +70,7 @@ Cada pasta de projeto tem seu próprio `CAMBIOS_PROMPT.md`. Append da nova entra
 | `T2H/` | `T2H_v1.0.2.md` | ✅ |
 | `Go Tech/` | `Go Tech_v1.0.3.md` | ✅ |
 | `JS Imports Cell/` | `JS Imports Cell_v1.0.1.md` | ✅ |
-| `TS STORE/` | `TS STORE_v1.0.4.md` | ✅ |
+| `TS STORE/` | `TS STORE_v1.0.6.md` | ✅ |
 
 ## Proibições
 

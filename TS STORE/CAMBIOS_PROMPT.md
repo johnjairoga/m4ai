@@ -190,3 +190,74 @@ Nova subseção **`### Encerramento ou pausa da conversa pelo cliente`** em **Re
 - **Melhora:** Experiência de encerramento natural e respeitosa, alinhada ao tom TS Store
 
 ---
+
+## Mudança #6 — Remoção do aviso predeterminado de fora do horário
+
+**Data:** 17/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.5
+**Solicitante:** Cliente
+
+### Problema identificado
+A IA enviava automaticamente o bloco de mensagem de fora do horário (*"Boa noite! No momento nossa equipe está fora do horário de atendimento…"*) em conversas de venda normais — por exemplo, quando o cliente apenas perguntava preço de iPhone 14/15 às 19h — em vez de continuar qualificação e orçamento.
+
+### Solução
+Na seção **HORÁRIO DE ATENDIMENTO DA EQUIPE**:
+- Removida a subseção **Quando avisar horário + redirecionar ao grupo** e o template de resposta obrigatória (linhas 153–163 da v1.0.4)
+- Nova subseção **Proibido — aviso predeterminado de fora do horário**: proibição explícita de enviar esse bloco em **qualquer** cenário
+- Regra de supersessão: esta seção prevalece sobre outras instruções que mandem o aviso na `message`
+- Handoffs fora do expediente passam a usar copy normal de **REDIRECIONAMENTOS** (*"em instantes"*, *"nossa equipe"*, etc.)
+
+Em **REDIRECIONAMENTOS → Pré-requisito — fora do horário da equipe**:
+- Removida a **Frase complementar obrigatória em handoff fora do horário**
+- Linha `Fora do expediente` atualizada para proibir o bloco predeterminado
+
+### Arquivos afetados
+- `TS STORE_v1.0.5.md` (criado a partir de v1.0.4)
+
+### Validação
+✅ Template predeterminado de fora do horário removido
+✅ Proibição explícita em qualquer cenário (preço, humano, handoff, garantia)
+✅ Handoffs fora do expediente mantidos com copy normal e `redirecionamento: true`
+✅ Demais fluxos (orçamento, VBT, encomenda, encerramento) não alterados
+
+### Impacto
+- **Previne:** Mensagem de fora do horário em perguntas de preço/modelo fora do expediente
+- **Remove:** Bloco automático "Registrei seu contato e nossa equipe retorna…"
+- **Mantém:** Ana atendendo 24h e handoffs normais ao grupo
+
+---
+
+## Mudança #7 — Horário de funcionamento somente quando o cliente perguntar
+
+**Data:** 17/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.6
+**Solicitante:** Cliente
+
+### Problema identificado
+Após remover o aviso automático de fora do horário (v1.0.5), era necessário garantir que a informação de horário de funcionamento da loja permaneça disponível quando o cliente perguntar — sem reintroduzir uma regra que interrompa o fluxo normal (orçamento, preço, qualificação).
+
+### Solução
+Subseção **Perguntas só sobre horário** substituída por **Quando o cliente perguntar sobre horário de funcionamento**, com:
+- Gatilhos explícitos (*"Qual o horário?"*, *"Vocês estão abertos agora?"*, etc.)
+- Texto de referência com horários Seg–Sex, Sábado e Domingo (mesmo conteúdo da v1.0.4)
+- Regra: responder **somente** quando perguntado; `redirecionamento: false`, `departamento: ts_store`
+- Exemplo ✅ JSON e ❌ de enviar horário sem pergunta
+- Atualização em **INFORMAÇÕES DA EMPRESA** e tabela **REDIRECIONAMENTOS** (pergunta se loja está aberta → horários, sem bloco proibido)
+
+### Arquivos afetados
+- `TS STORE_v1.0.6.md` (criado a partir de v1.0.5)
+
+### Validação
+✅ Horários de funcionamento preservados no prompt
+✅ Resposta obrigatória apenas quando cliente pergunta
+✅ Proibido enviar horário em perguntas de preço/modelo sem gatilho
+✅ Bloco automático de fora do horário continua proibido (v1.0.5)
+
+### Impacto
+- **Mantém:** Cliente que pergunta horário recebe informação completa da loja
+- **Previne:** Horário interrompendo fluxo de venda sem pergunta do cliente
+- **Melhora:** Distinção clara entre "perguntou horário" vs "só quer preço"
+
+---
