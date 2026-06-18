@@ -1328,3 +1328,37 @@ O aviso `⚠️ Por gentileza, mandar as informações solicitadas a baixo por e
 - **Previne:** Tom de cobrança com aviso ⚠️ redundante
 
 ---
+
+## Mudança #30 — Confirmação de pagamento e fechamento pós-escolha do aparelho
+
+**Data:** 18/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.15
+**Solicitante:** Cliente
+
+### Problema identificado
+Após o cliente escolher um aparelho da proposta apresentada, faltava um fluxo padronizado para: confirmar o modelo selecionado, verificar troca (se ainda não perguntado), qualificar modalidade de pagamento (à vista ou parcelado), apresentar a condição escolhida com formato e emojis corretos, e só então seguir para cores e demais etapas de fechamento — sem assumir forma de pagamento nem quantidade de parcelas.
+
+### Solução
+- Nova seção **REGRA COMPLEMENTAR — CONFIRMAÇÃO DE PAGAMENTO E FECHAMENTO DA VENDA** inserida antes de *Fechamento de Venda*, com 8 subitens: confirmação do aparelho, troca condicional, modalidade à vista/parcelado, formatos de apresentação parcelado (📄 + 💳 + Total) e à vista (💰), regra de emojis (💰 à vista / 💳 parcelado), continuação com cores disponíveis e retomada do fluxo normal.
+- Referência cruzada adicionada em *Fechamento de Venda* para executar esta regra antes do PASSO 0 (retirada/entrega) quando o cliente escolher aparelho da lista.
+- Nota de coexistência: orçamentos **anteriores** à escolha mantêm 💵/💳; **após** a escolha do aparelho, usa 💰/💳 conforme a nova regra.
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.15.md` (criado a partir de v1.2.14)
+
+### Validação
+✅ v1.2.14 preservado intacto — nenhuma edição na versão anterior
+✅ PASSO 2.5, PASSO 3.5, tags de orçamento, VBT, ESTOQUE e demais fluxos pré-escolha inalterados
+✅ Regra aplicável somente após escolha explícita do aparelho (gatilho documentado)
+✅ Troca condicional — pula se PASSO 2.5 já executado
+✅ Proibição de assumir modalidade ou parcelas reforçada
+✅ Formato de apresentação à vista e parcelado conforme solicitado pelo cliente
+
+### Impacto
+- **Padroniza:** Fluxo de confirmação de pagamento após escolha do aparelho
+- **Previne:** Assumir forma de pagamento ou quantidade de parcelas sem confirmação
+- **Melhora:** Sequência lógica — modelo → troca → pagamento → cores → fechamento
+- **Padroniza:** Emojis 💰 (à vista/Pix) e 💳 (parcelado/boleto/financiamento) no fluxo pós-escolha
+
+---
