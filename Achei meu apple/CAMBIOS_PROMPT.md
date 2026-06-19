@@ -1362,3 +1362,192 @@ Após o cliente escolher um aparelho da proposta apresentada, faltava um fluxo p
 - **Padroniza:** Emojis 💰 (à vista/Pix) e 💳 (parcelado/boleto/financiamento) no fluxo pós-escolha
 
 ---
+
+## Mudança #31 — Confirmação de compra e coleta cadastral para pedido
+
+**Data:** 18/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.16
+**Solicitante:** Cliente
+
+### Problema identificado
+A IA podia solicitar CPF, endereço ou nome completo durante fases de orçamento e negociação, antes do cliente confirmar explicitamente a intenção de compra — gerando atrito e coleta prematura de dados cadastrais.
+
+### Solução
+- Nova seção **ETAPA DE CONFIRMAÇÃO DE COMPRA E COLETA DE DADOS** inserida após *Fechamento de Venda*, com: proibição de dados cadastrais na pré-venda; lista de gatilhos de confirmação de compra; resposta padrão obrigatória para coleta (nome completo, CPF, endereço); distinção interesse vs. confirmação; exceções documentadas (nome na saudação, VBT, Boleto/CDC, Entrega e Frete).
+- Nota em *Entrega e Frete* esclarecendo que endereço ali é só para frete, não para pedido.
+- Bullet em *Regras Inegociáveis* reforçando a proibição.
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.16.md` (criado a partir de v1.2.15)
+
+### Validação
+✅ v1.2.15 preservado intacto — nenhuma edição na versão anterior
+✅ Fluxos VBT, Boleto, CDC SICOOB/Viacredi e saudação com primeiro nome mantidos com exceções explícitas
+✅ Gatilhos de confirmação e resposta padrão conforme solicitado pelo cliente
+✅ Regra de retomada: negociação após interesse sem confirmação explícita não dispara coleta
+
+### Impacto
+- **Previne:** Coleta de CPF/endereço/nome completo antes da confirmação de compra
+- **Padroniza:** Resposta única ao fechar ("Show, fechado! 🎉" + checklist de dados)
+- **Melhora:** Distinção clara entre interesse, negociação e fechamento definitivo
+
+---
+
+## Mudança #32 — Prioridade e ordem fixa do fluxo pós-escolha do aparelho
+
+**Data:** 19/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.17
+**Solicitante:** Cliente
+
+### Problema identificado
+Após o cliente escolher aparelho da lista ("Gostei desse iPhone 17 Pro 256GB"), a IA pulava a REGRA COMPLEMENTAR (confirmação, condição de pagamento, cor) e ia direto para "retirar ou entrega?"; ao responder "Entrega", acionava o fluxo *Entrega e Frete* (frete grátis) em vez da coleta cadastral do pedido (nome completo, CPF, endereço). Regra de loja fechada também interceptava fechamento pós-orçamento.
+
+### Solução
+- **Tabela de prioridade** em *REGRA COMPLEMENTAR*: ordem fixa 1) complementar (modelo→pagamento→cor) → 2) retirada/entrega → 3) coleta cadastral → 4) agendamento.
+- Proibições explícitas: não perguntar retirada/entrega antes da complementar; não usar *Entrega e Frete* no PASSO 0 do fechamento; não redirecionar loja fechada no fluxo pós-orçamento.
+- Gatilhos ampliados: "gostei desse/do [modelo]", "quero comprar o [modelo]" após orçamento.
+- Item 3: pular pergunta de modalidade se parcelas já informadas (ex.: 12x antes do orçamento).
+- Exemplo prático espelhando conversa real (iPhone 17 Pro) com fluxo certo vs. errado.
+- *Fechamento de Venda*: PASSO 0 só após REGRA COMPLEMENTAR; coleta cadastral após retirada/entrega.
+- *ETAPA DE CONFIRMAÇÃO DE COMPRA*: gatilho = complementar concluída + PASSO 0 respondido; proibição de CPF antes disso.
+- *Redirecionamentos*: loja fechada só para visita imediata, não para WhatsApp pós-orçamento.
+- *Entrega e Frete*: exclusão explícita quando cliente responde "entrega" no fechamento.
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.17.md` (criado a partir de v1.2.16)
+
+### Validação
+✅ v1.2.16 preservado intacto
+✅ Alterações restritas às seções de fechamento pós-escolha (complementar, fechamento, coleta de dados, exceções em redirecionamentos e entrega/frete)
+✅ PASSO 2.5, 3.5, orçamento, VBT, ESTOQUE, tags e demais fluxos pré-escolha inalterados
+✅ Exemplo prático documentado com caso iPhone 17 Pro 256GB
+
+### Impacto
+- **Corrige:** Pulos de etapa e uso incorreto de Entrega e Frete no fechamento
+- **Padroniza:** Ordem fixa pós-escolha até coleta de CPF/nome/endereço
+- **Previne:** Redirect de loja fechada durante fechamento no WhatsApp
+
+---
+
+## Mudança #33 — Pergunta direcionada no passo 2 da saudação
+
+**Data:** 19/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.18
+**Solicitante:** Cliente
+
+### Problema identificado
+Após o cliente informar o nome, o passo 2 usava a pergunta genérica "Em que posso te ajudar hoje?", pouco direcionada para qualificar o interesse em iPhone.
+
+### Solução
+- Em *Regra de Saudação na Primeira Mensagem → passo 2*: substituída a pergunta genérica por duas mensagens — (1) "Olá [nome], vou te ajudar por aqui 😊" + (2) "Oi! Tudo bem? Você está procurando algum iPhone específico ou quer ver as opções que temos disponíveis?"
+- Proibição explícita de usar "Em que posso te ajudar hoje?" no passo 2.
+- Ajustes pontuais no mesmo bloco: exemplo quando nome já conhecido, recusa de nome e referência no fluxo de retomada de pedido.
+- Gatilho de anúncio e demais seções do prompt inalterados.
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.18.md` (criado a partir de v1.2.17)
+
+### Validação
+✅ v1.2.17 preservado intacto
+✅ Alteração restrita à seção *Regra de Saudação na Primeira Mensagem*
+✅ Passo 1 (cumprimento + pedido de nome) mantido
+✅ Fluxo *Nome antes de atender*, anúncio, VBT, orçamento e fechamento inalterados
+
+### Impacto
+- **Melhora:** Abertura mais consultiva e direcionada à qualificação de interesse
+- **Padroniza:** Pergunta fixa após obtenção do nome
+
+---
+
+## Mudança #34 — Reforço passo 2 quando nome vem na 1ª mensagem
+
+**Data:** 19/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.19
+**Solicitante:** Cliente
+
+### Problema identificado
+Em teste real, cliente enviou "Ola aqui John" na 1ª mensagem e a IA respondeu "Olá John, vou te ajudar por aqui. Em que posso te ajudar hoje?" — ignorando a pergunta direcionada implementada em v1.2.18. O cenário **nome já informado na abertura** não estava explícito o suficiente; o modelo reutilizava o texto antigo em um único balão.
+
+### Solução
+- Bloco **PERGUNTA OBRIGATÓRIA DO PASSO 2** com texto fixo no topo da seção de saudação.
+- Fluxo em **3 mensagens** quando o nome vem na 1ª mensagem: saudação → "Olá [nome], vou te ajudar por aqui 😊" → pergunta direcionada fixa.
+- Exemplos **certo vs. errado** espelhando o caso "Ola aqui John".
+- Proibição explícita de juntar mensagens 2 e 3 ou pular a pergunta direcionada.
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.19.md` (criado a partir de v1.2.18)
+
+### Validação
+✅ v1.2.18 preservado intacto
+✅ Alteração restrita à seção *Regra de Saudação na Primeira Mensagem*
+✅ Exemplo errado documentado com frase proibida "Em que posso te ajudar hoje?"
+
+### Impacto
+- **Corrige:** Nome na 1ª mensagem não dispara mais pergunta genérica
+- **Reforça:** Texto fixo e exemplos anti-regressão para o passo 2
+
+---
+
+## Mudança #35 — Pergunta direcionada sem repetir "Oi! Tudo bem?"
+
+**Data:** 19/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.20
+**Solicitante:** Cliente
+
+### Problema identificado
+Após "Olá [nome], vou te ajudar por aqui 😊", a IA enviava "Oi!", "Tudo bem?" e a pergunta em balões separados — repetindo saudação já feita no fluxo anterior (Boa tarde + Daniela + vou te ajudar).
+
+### Solução
+- Passo 2 reduzido a **2 mensagens exatas:** (1) "Olá [nome], vou te ajudar por aqui 😊" + (2) "Você está procurando algum iPhone específico ou quer ver as opções que temos disponíveis?" — **sem** "Oi! Tudo bem?" antes.
+- Proibição de dividir a pergunta direcionada em múltiplos balões.
+- Exemplo errado documentado com os balões extras.
+- Ajuste pontual na recusa de nome (mesma pergunta, uma mensagem).
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.20.md` (criado a partir de v1.2.19)
+
+### Validação
+✅ v1.2.19 preservado intacto
+✅ Alteração restrita à seção *Regra de Saudação na Primeira Mensagem*
+✅ Fluxo Bom dia → nome → Jairo documentado com 2 balões finais
+
+### Impacto
+- **Corrige:** Repetição de "Oi! Tudo bem?" após apresentação
+- **Padroniza:** Pergunta direcionada em um único balão após "vou te ajudar por aqui"
+
+---
+
+## Mudança #36 — Nova pergunta obrigatória de troca (PASSO 2.5)
+
+**Data:** 19/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.21
+**Solicitante:** Cliente
+
+### Problema identificado
+A pergunta do PASSO 2.5 ("você já usa iPhone atualmente ou seria o primeiro?" + texto explicativo em múltiplos balões) não refletia a forma desejada de qualificar entrada vs. compra direta.
+
+### Solução
+- Em **PASSO 2.5 - Pergunta Obrigatória de Troca**, substituída a pergunta por texto fixo em **uma única mensagem**: *"Você tem algum aparelho usado que gostaria de dar como entrada ou será uma compra direta?"*
+- Ramificações pós-resposta atualizadas: **tem aparelho/entrada/troca** → fluxo VBT existente; **compra direta/sem troca** → PASSO 3.
+- Demais seções (REGRA COMPLEMENTAR pós-escolha, VBT, orçamento, saudação, fechamento) inalteradas.
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.21.md` (criado a partir de v1.2.20)
+
+### Validação
+✅ v1.2.20 preservado intacto
+✅ Alteração restrita ao bloco PASSO 2.5
+✅ Exceções (VBT em andamento, pergunta já feita) mantidas
+✅ Fluxo VBT e follow-ups de modelo inalterados
+
+### Impacto
+- **Padroniza:** Pergunta única e direta sobre entrada vs. compra direta
+- **Melhora:** Qualificação mais clara antes do orçamento
+
+---
