@@ -1,6 +1,6 @@
 # Registro de Mudanças — Francivaldo Phones
 
-> Arquivo de controle de versões do prompt do agente de processamento de consultas de estoque (Francivaldo Phones).
+> Arquivo de controle de versões do prompt de atendimento Maria (Francivaldo Phones — Boleto/Financiamento).
 > **Regra:** nunca modificar o arquivo de versão anterior. Cada mudança gera um novo arquivo versionado.
 
 ---
@@ -68,5 +68,104 @@ Atualizada seção **INFORMAÇÕES ADICIONAIS** no final do prompt com os mesmos
 ### Impacto
 - **Padroniza:** Dados oficiais da loja no prompt
 - **Melhora:** Base para orientar clientes sobre visita e retirada na loja
+
+---
+
+## Mudança #3 — Resposta padronizada ao interesse em boleto
+
+**Data:** 19/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.2
+**Solicitante:** Cliente
+
+### Problema identificado
+Quando o cliente mencionava boleto ou dizia que queria comprar no boleto, a IA respondia com texto resumido e em balões separados (ex.: "No boleto a gente trabalha com Android lacrado... em até 18x com entrada" + "Qual aparelho tu tá querendo?"), em vez do modelo oficial solicitado pelo cliente.
+
+### Solução
+Adicionado em **Identificação da Loja — Francivaldo Phones** o bloco **Modelo de referência — interesse em boleto**, com gatilhos, regra de uso exato do texto e mensagem obrigatória fornecida pelo cliente (Android novos e lacrados Samsung/Motorola/Realme/Xiaomi, até 18x, entrada facilitada e pergunta pelo modelo).
+
+### Arquivos afetados
+- `Francivaldo Phones_v1.0.2.md` (criado a partir de v1.0.1)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Modelo de mensagem cadastrado conforme texto do cliente
+✅ Gatilhos de boleto documentados na seção de identificação da loja
+✅ Regra proíbe resumir ou fragmentar a resposta em balões com redação diferente
+✅ v1.0.1 preservado intacto
+
+### Impacto
+- **Padroniza:** Resposta única e oficial quando o cliente pergunta ou declara compra no boleto
+- **Corrige:** Comportamento observado no atendimento (texto antigo em dois balões)
+- **Melhora:** Clareza sobre marcas, parcelamento e próximo passo (modelo de interesse)
+
+---
+
+## Mudança #4 — Novo prompt Maria (atendimento humanizado)
+
+**Data:** 23/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v2.0.0
+**Solicitante:** Cliente
+
+### Problema identificado
+O prompt anterior (v1.0.x) era um **agente de processamento de consultas de estoque** (extração de query JSON para busca no banco). O cliente passou a usar a Francivaldo Phones com o fluxo de **atendimento virtual Maria** (qualificação, ESTOQUE, boleto/financiamento, links PayJoy/CLT, redirecionamento OFJ), alinhado ao padrão humanizado de outras lojas.
+
+### Solução
+Substituição completa do conteúdo do prompt por **Prompt de Atendimento — Maria | Francivaldo Phones (Boleto/Financiamento) — Versão Humanizada**, incluindo:
+- Persona Maria, tom regional Piauí, fluxo Passos 1–7
+- Tool `ESTOQUE`, card de orçamento, CTA obrigatório, quatro formas de pagamento
+- Links PayJoy e CLT/consignado **sem** consulta de CPF no chat
+- Políticas de seminovo (só iPhone), iPhone lacrado descontinuado, boleto Android
+- Fichas de produtos complementares, assistência, redirecionamentos (`francivaldo-phones`, `varejo`, `gerente`, `atacado`, `tecnico`, `garantias`)
+- Formato de saída JSON com exemplos
+
+Versões v1.0.0–v1.0.2 e `Prompt Original.md` **preservados** como histórico do agente de estoque.
+
+### Arquivos afetados
+- `Francivaldo Phones_v2.0.0.md` (criado — novo prompt Maria)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Prompt Maria registrado integralmente em v2.0.0
+✅ Arquivo de trabalho sincronizado com a versão versionada
+✅ Versões anteriores (v1.0.x) mantidas intactas
+✅ Entrada registrada em CAMBIOS_PROMPT.md
+
+### Impacto
+- **Substitui:** Agente de estoque pelo atendimento comercial humanizado Maria
+- **Padroniza:** Fluxo OFJ, ESTOQUE-first, sem formulário de consulta de CPF
+- **Melhora:** Qualificação (modelo → pagamento → orçamento), links de financiamento e handoff por departamento
+
+---
+
+## Mudança #5 — Resposta padronizada ao interesse em boleto (prompt Maria)
+
+**Data:** 23/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v2.0.1
+**Solicitante:** Cliente
+
+### Problema identificado
+No prompt Maria (v2.0.0), quando o cliente mencionava boleto ou dizia que queria comprar no boleto, a IA podia responder com texto resumido e em balões separados (ex.: "No boleto a gente trabalha com Android lacrado... em até 18x com entrada" + "Qual aparelho tu tá querendo?"), em vez do modelo oficial já validado na Mudança #3 (v1.0.2).
+
+### Solução
+- Adicionado em **Identificação da Loja** o bloco **Modelo de referência — interesse em boleto**, com gatilhos, regra de uso do texto exato e mensagem obrigatória (Android novos e lacrados Samsung/Motorola/Realme/Xiaomi, até 18x, entrada facilitada e pergunta pelo modelo).
+- Adicionado em **Cenários Especiais** o cenário **Cliente pergunta ou declara interesse em boleto**, apontando para o modelo e proibindo fragmentar com redação diferente.
+
+### Arquivos afetados
+- `Francivaldo Phones_v2.0.1.md` (criado a partir de v2.0.0)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Modelo de mensagem cadastrado conforme Mudança #3
+✅ Gatilhos de boleto documentados na seção de identificação da loja
+✅ Cenário especial reforça proibição de resumir ou fragmentar a resposta
+✅ v2.0.0 preservado intacto
+
+### Impacto
+- **Padroniza:** Resposta única e oficial quando o cliente pergunta ou declara compra no boleto
+- **Corrige:** Comportamento observado no atendimento (texto antigo em dois balões)
+- **Melhora:** Clareza sobre marcas, parcelamento e próximo passo (modelo de interesse)
 
 ---
