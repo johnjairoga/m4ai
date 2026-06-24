@@ -169,3 +169,98 @@ No prompt Maria (v2.0.0), quando o cliente mencionava boleto ou dizia que queria
 - **Melhora:** Clareza sobre marcas, parcelamento e próximo passo (modelo de interesse)
 
 ---
+
+## Mudança #6 — Pergunta oficial pelo modelo de interesse
+
+**Data:** 23/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v2.0.2
+**Solicitante:** Cliente
+
+### Problema identificado
+A IA respondia com variações como *"Qual aparelho tu tá querendo?"* ou *"Qual aparelho você está buscando?"* ao perguntar o modelo, em vez do texto oficial solicitado pelo cliente.
+
+### Solução
+- Substituída a pergunta pelo modelo em **Passo 2**, **apresentação comercial**, **Primeira Mensagem** e **exemplos JSON** por: **"Qual modelo de celular você tem interesse em?"**
+- Adicionado bloco **Texto oficial da pergunta pelo modelo** com lista **PROIBIDO** (*"Qual aparelho tu tá querendo?"*, etc.)
+- Regra explícita de usar sempre o texto oficial na qualificação de modelo (exceto no **Modelo de referência — interesse em boleto**, que mantém redação fixa própria)
+
+### Arquivos afetados
+- `Francivaldo Phones_v2.0.2.md` (criado a partir de v2.0.1)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Texto oficial cadastrado em Passo 2, abertura comercial e exemplos JSON
+✅ Variações proibidas documentadas (tu tá querendo / aparelho)
+✅ v2.0.1 preservado intacto
+
+### Impacto
+- **Padroniza:** Pergunta única pelo modelo conforme ficha do cliente
+- **Corrige:** Resposta regional/informal "qual aparelho tu tá querendo?"
+- **Melhora:** Clareza na qualificação do interesse (modelo de celular)
+
+---
+
+## Mudança #7 — Pergunta oficial pelo valor de entrada (Passo 4)
+
+**Data:** 23/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v2.0.3
+**Solicitante:** Cliente
+
+### Problema identificado
+No ramo **boleto** (Passo 4), a IA respondia *"Quanto tu pretende dar de entrada?"* em tom regional, em vez do texto oficial solicitado pelo cliente.
+
+### Solução
+- Substituído o **texto-base** do **Passo 4** por: **"[NOME], qual valor você pretende dar de entrada?"**
+- Adicionado bloco **Texto oficial da pergunta de entrada** com lista **PROIBIDO** (*"Quanto tu pretende dar de entrada?"*, etc.)
+- Regra de usar **você** + **qual valor** nesta pergunta (sem **tu/quanto**), alinhada em troca como entrada, simulação na loja e exemplo **3b** (ERRADO)
+
+### Arquivos afetados
+- `Francivaldo Phones_v2.0.3.md` (criado a partir de v2.0.2)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Texto oficial cadastrado no Passo 4 (somente boleto)
+✅ Variações proibidas documentadas (tu/quanto)
+✅ v2.0.2 preservado intacto
+
+### Impacto
+- **Padroniza:** Pergunta de entrada conforme ficha do cliente
+- **Corrige:** "Quanto tu pretende dar de entrada?"
+- **Melhora:** Qualificação de entrada no financiamento com linguagem consistente
+
+---
+
+## Mudança #8 — Reforço Passo 4 entrada (caso real John Jairo)
+
+**Data:** 24/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v2.0.4
+**Solicitante:** Cliente
+
+### Problema identificado
+Apesar do texto oficial na v2.0.3, em atendimento real (cliente John Jairo escolheu **boleto** após recomendação Xiaomi) a IA respondeu *"John Jairo, quanto tu pretende dar de entrada?"* em vez de *"John Jairo, qual valor você pretende dar de entrada?"*. O rótulo **tom regional** no Passo 4 conflitava com a regra de **você/qual valor**, e faltava exemplo JSON do ramo boleto → Passo 4.
+
+### Solução
+- **Passo 4:** bloco **REGRA CRÍTICA — PERGUNTA DE ENTRADA (TEXTO FIXO)** com caso real ERRADO vs texto exato
+- Rótulo do texto-base alterado para **cópia exata, sem regionalismo tu/quanto**
+- Tabela do **Passo 3** (ramo boleto) cita o texto exato obrigatório
+- **Regras Específicas** e **checklist JSON** reforçam Passo 4
+- **Exemplo 3f** (John Jairo + boleto → Passo 4) com JSON correto e ERRADO explícito
+
+### Arquivos afetados
+- `Francivaldo Phones_v2.0.4.md` (criado a partir de v2.0.3)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Caso real documentado como ERRADO no prompt
+✅ Exemplo JSON 3f espelha fluxo boleto → pergunta de entrada
+✅ v2.0.3 preservado intacto
+
+### Impacto
+- **Corrige:** IA usando tu/quanto no Passo 4 após escolha de boleto
+- **Reforça:** Exceção ao tom regional só na pergunta de entrada
+- **Melhora:** Adesão ao texto fixo sem alterar resto do fluxo
+
+---
