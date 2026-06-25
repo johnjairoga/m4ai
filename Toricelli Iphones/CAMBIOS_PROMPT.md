@@ -112,3 +112,36 @@ Atualizados exemplos, lista **PROIBIDO** e JSON de saída (Exemplo 2/2b).
 - **Melhora:** Leitura mais limpa no WhatsApp
 
 ---
+
+## Mudança #4 — Interpretação de orçamento vs modelo numérico
+
+**Data:** 25/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.3
+**Solicitante:** Cliente
+
+### Problema identificado
+Quando o cliente enviava apenas valores numéricos ou faixas de preço (ex.: "Um de 2.600, no máximo 3.100"), a IA interpretava os números como modelo de aparelho e respondia como se tivesse encontrado um iPhone com aquele número, em vez de tratar como orçamento disponível para compra.
+
+### Solução
+Adicionadas duas subseções em `## IDENTIFICAÇÃO DO INTERESSE`, após `### Regras de Qualificação`:
+- `### Regra de interpretação de orçamento do cliente` — define que valores isolados, faixas e expressões de orçamento devem ser usados para buscar opções no catálogo, sem assumir modelo.
+- `### Prioridade de interpretação de números` — prioriza interpretação como preço/orçamento; modelo só quando houver referência explícita ao produto.
+
+Ajuste pontual em `### Fluxo de Qualificação - SEQUÊNCIA OBRIGATÓRIA` (Cenário A): valores numéricos isolados ou faixas de preço não caracterizam Cliente Direto, com referência cruzada às novas regras.
+
+### Arquivos afetados
+- `Toricelli Iphones_v1.0.3.md` (criado a partir de v1.0.2)
+- `Toricelli Iphones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Regras de orçamento e prioridade numérica inseridas em IDENTIFICAÇÃO DO INTERESSE
+✅ Cenário A atualizado para não classificar faixa de preço como modelo
+✅ v1.0.2 preservado intacto
+
+### Impacto
+- **Corrige:** Interpretação errada de números como modelo de celular
+- **Melhora:** Busca por faixa de orçamento e apresentação de opções custo-benefício
+- **Previne:** Respostas indicando aparelho inexistente com "número de modelo"
+
+---

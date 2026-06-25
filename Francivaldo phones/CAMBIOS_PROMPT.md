@@ -264,3 +264,66 @@ Apesar do texto oficial na v2.0.3, em atendimento real (cliente John Jairo escol
 - **Melhora:** Adesão ao texto fixo sem alterar resto do fluxo
 
 ---
+
+## Mudança #9 — Requisitos de documentação para análise no boleto (fluxo + FAQ)
+
+**Data:** 23/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v2.0.5
+**Solicitante:** Cliente
+
+### Problema identificado
+Quando o cliente confirmava compra via boleto ou perguntava sobre documentação, requisitos ou análise do boleto, a IA não informava de forma padronizada o que é necessário para prosseguir com a análise (RG legível, chip ativo, titular presente na loja).
+
+### Solução
+- Criado bloco **Requisitos para análise no boleto (documentação)** em **Financiamento no boleto** (Informações da Loja) com os três itens oficiais e texto de referência.
+- **Passo 4** atualizado: após a pergunta de entrada (balão 1), **balão 2 obrigatório** com os requisitos quando o cliente confirmou compra via boleto.
+- Novo cenário **Cliente pergunta documentos, requisitos ou análise no boleto (FAQ)** em Cenários Especiais — mesma ficha para perguntas sobre documentação, requisitos, aprovação ou análise.
+- Reforço em **Regras Específicas**, checklist JSON e exemplos **3f** (fluxo) e **3g** (FAQ).
+
+### Arquivos afetados
+- `Francivaldo Phones_v2.0.5.md` (criado a partir de v2.0.4)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Fluxo boleto (Passo 4) exige segundo balão com RG, chip ativo e titular na loja
+✅ FAQ global responde com os mesmos três requisitos e explicação de agilizar análise
+✅ v2.0.4 preservado intacto
+
+### Impacto
+- **Padroniza:** Informação de documentação/requisitos no boleto em todo o atendimento
+- **Melhora:** Cliente sabe o que levar antes da análise e visita à loja
+- **Previne:** Respostas vagas ou redirecionamento ao vendedor sem listar requisitos
+
+---
+
+## Mudança #10 — Resposta combinada boleto (política + link PayJoy + requisitos)
+
+**Data:** 23/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v2.0.6
+**Solicitante:** Cliente
+
+### Problema identificado
+Caso real (Francisco): cliente perguntou *"O que é necessário para comprar no boleto?"* e a IA respondeu com política (Android, entrada, 18x) + link PayJoy, mas **sem** os requisitos de documentação. O cliente precisou insistir: *"Isso eu já sei. Qual documento é necessário?"*
+
+### Solução
+- Criado bloco **Resposta combinada — boleto PayJoy (política + link + requisitos)** em **Financiamento no boleto** — **3 balões obrigatórios** no mesmo turno quando o assunto for necessários/documentos/compra no boleto ou envio do link PayJoy.
+- Cenário FAQ atualizado: **não** enviar só requisitos nem só política+link.
+- **Passo 6** (regras dos links), **Cliente negativado**, checklist JSON, exceção de balões e exemplos **3g** (Francisco), **3h** (reforço) e **7** atualizados.
+
+### Arquivos afetados
+- `Francivaldo Phones_v2.0.6.md` (criado a partir de v2.0.5)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Pergunta *"o que é necessário para comprar no boleto?"* exige política + link + RG/chip/titular
+✅ Caso real documentado como ERRADO (só 2 balões sem requisitos)
+✅ v2.0.5 preservado intacto
+
+### Impacto
+- **Corrige:** Cliente não precisa perguntar documento em mensagem separada
+- **Padroniza:** Link PayJoy sempre acompanhado dos requisitos oficiais
+- **Melhora:** Resposta completa em um único turno
+
+---
