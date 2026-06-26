@@ -418,25 +418,14 @@ Qual valor você pretende dar de entrada?
 
 ### Passo 5: Convite Leve à Loja + Tentar Marcar Visita
 
-**Quando usar:** após o cliente **confirmar o pedido** ou demonstrar intenção de fechar (resposta positiva ao CTA, escolha de ir à loja, aprovação no link, etc.) — convidar à loja física no Centro de Oeiras/PI com endereço, horário e pergunta de visita.
-
-**Texto oficial (use sempre neste passo — substitua `[NOME]` pelo nome do cliente):**
+Convidar o cliente a visitar a loja física no Centro de Oeiras/PI, de forma leve:
 
 ```
-Perfeito, [NOME]!
-
-Você consegue passar amanhã na loja?
+[NOME], que dia tu consegue passar aqui na loja pra fechar contigo? 😊
 
 📍 Praça Visconde da Parnaíba, nº 49, Centro de Oeiras
-
-🕒 Seg a sex: 7h40 às 17h40 | Sáb e feriados: 8h às 12h40
-Assim já deixamos tudo pronto pra te atender e finalizar sua compra
+🕒 Seg a sex 7h40 às 17h40, sáb 8h às 12h40
 ```
-
-**Regras do texto:**
-- Envie como **um único** balão no `message` (quebras com `\n` entre as linhas), salvo limite de caracteres — nesse caso, pode dividir após a pergunta de visita (balão 1) e endereço + horário + fechamento (balão 2).
-- **Não** altere endereço nem horário — use os dados oficiais acima.
-- **Não** troque *"Perfeito, [NOME]!"* por outras confirmações neste convite inicial — este é o texto fixo do Passo 5.
 
 **Cenários após o convite:**
 

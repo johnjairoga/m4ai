@@ -327,3 +327,94 @@ Caso real (Francisco): cliente perguntou *"O que é necessário para comprar no 
 - **Melhora:** Resposta completa em um único turno
 
 ---
+
+## Mudança #11 — CTA boleto/financiamento (link vs loja)
+
+**Data:** 25/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v2.0.7
+**Solicitante:** Cliente
+
+### Problema identificado
+Após orçamento no ramo boleto/financiamento, a IA improvisava comunicação formal (*"Você prefere fazer a análise pelo link ou passar na loja?"*), separava pitch de loja em balões extras e fechava com tagline corporativa (*"Francivaldo Phones — estamos à disposição..."*), fora do tom regional da Maria e sem orientar claramente o próximo passo (link PayJoy vs convite à loja).
+
+### Solução
+- **CTA obrigatório após orçamento:** texto oficial **CTA boleto/financiamento** (link vs loja + benefício da visita presencial) e variação curta; regras de ramificação (link → Passo 6 / Resposta combinada PayJoy; loja → Passo 5).
+- Proibição de fechamento corporativo, balões extras de marca e CTA genérico (*"Fica bom pra ti?"*) no ramo boleto/CLT.
+- Tabela de preço boleto, exemplos **✅/❌ CERTO/ERRADO**, **Exemplo 3i** (João / Galaxy A16) e item no checklist JSON.
+
+### Arquivos afetados
+- `Francivaldo Phones_v2.0.7.md` (criado a partir de v2.0.6)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ CTA boleto padronizado com tom *tu* e escolha link vs loja em 2 balões
+✅ Ramificação documentada (link → PayJoy combinado; loja → Passo 5)
+✅ v2.0.6 preservado intacto
+
+### Impacto
+- **Padroniza:** Comunicação pós-orçamento no boleto/financiamento
+- **Melhora:** Cliente entende as duas opções (link ou loja) sem texto improvisado
+- **Previne:** Fechamentos corporativos e CTAs genéricos no ramo boleto
+
+---
+
+## Mudança #12 — Resposta padrão: cliente aprovado na análise do link
+
+**Data:** 25/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v2.0.8
+**Solicitante:** Cliente
+
+### Problema identificado
+Após o cliente fazer a análise/simulação no link (PayJoy ou CLT) e informar no chat que foi aprovado (ex.: *"fui aprovado"*), não havia cenário dedicado nem texto oficial — a IA improvisava ou reenviava link/repasse ao vendedor sem orientar o comparecimento na loja.
+
+### Solução
+- Novo cenário **Cliente aprovado na análise do link (PayJoy ou CLT)** em **Cenários Especiais** com **texto oficial** em 2 balões (aprovação + comparecer com documento; definir [MODELO] e entrada na loja).
+- Regras: `francivaldo-phones`, sem repasse imediato; endereço via **Passo 5** se perguntarem; breve ramo para reprovação.
+- Reforços em **Passo 6**, **Resposta combinada PayJoy**, **Regras Específicas**, checklist JSON, redirecionamentos (**item 11**) e **Exemplo 7b** (João / Note 14).
+
+### Arquivos afetados
+- `Francivaldo Phones_v2.0.8.md` (criado a partir de v2.0.7)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Gatilhos *"fui aprovado"* / equivalentes mapeados ao texto oficial
+✅ [MODELO] dinâmico do fluxo; sem reenvio de link nem redirecionamento automático
+✅ v2.0.7 preservado intacto
+
+### Impacto
+- **Padroniza:** Pós-aprovação no link PayJoy/CLT
+- **Melhora:** Cliente sabe ir à loja com documento e fechar modelo/entrada presencialmente
+- **Previne:** Reenvio de link ou repasse ao vendedor sem necessidade
+
+---
+
+## Mudança #13 — Texto oficial do Passo 5 (convite à loja)
+
+**Data:** 25/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v2.0.9
+**Solicitante:** Cliente
+
+### Problema identificado
+Ao confirmar o pedido e convidar o cliente à loja (**Passo 5**), a mensagem usava redação antiga (*"que dia tu consegue passar aqui na loja pra fechar contigo?"*) e horário sem feriados, sem o fechamento sobre deixar tudo pronto para finalizar a compra.
+
+### Solução
+Atualizado **somente** o bloco **Passo 5: Convite Leve à Loja + Tentar Marcar Visita** com texto oficial fixo: *"Perfeito, [NOME]!"*, pergunta *"Você consegue passar amanhã na loja?"*, endereço, horário (incl. sáb e feriados) e frase de fechamento. Cenários 4A/4B/4C e demais seções **inalterados**.
+
+### Arquivos afetados
+- `Francivaldo Phones_v2.0.9.md` (criado a partir de v2.0.8)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Texto oficial do Passo 5 conforme modelo do cliente
+✅ Endereço e horário alinhados à identificação da loja
+✅ v2.0.8 preservado intacto
+
+### Impacto
+- **Padroniza:** Convite à loja após confirmação do pedido
+- **Melhora:** Cliente recebe endereço, horário e expectativa de finalização na visita
+- **Previne:** Redação improvisada ou desatualizada no convite
+
+---
