@@ -418,3 +418,34 @@ Atualizado **somente** o bloco **Passo 5: Convite Leve à Loja + Tentar Marcar V
 - **Previne:** Redação improvisada ou desatualizada no convite
 
 ---
+
+## Mudança #14 — Texto oficial: método de análise para financiamento
+
+**Data:** 25/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v2.0.10
+**Solicitante:** Cliente
+
+### Problema identificado
+Quando o cliente perguntava sobre o **método de análise** para financiamento (link vs loja), não havia texto oficial fixo — a IA omitia o pitch da equipe na loja e o fechamento *"Francivaldo Phones — estamos à disposição..."*, ou confundia com o FAQ de documentos (Resposta combinada PayJoy).
+
+### Solução
+- Novo cenário **Cliente pergunta sobre o método de análise para financiamento** em **Cenários Especiais** com **texto oficial completo** em 3 parágrafos (link vs loja + equipe na loja + fechamento Francivaldo Phones), sem omitir nenhuma linha.
+- FAQ documentos/requisitos atualizado para **não** absorver perguntas de método de análise.
+- Reforços em **Regras Específicas**, checklist JSON e **Exemplo 3j**.
+
+### Arquivos afetados
+- `Francivaldo Phones_v2.0.10.md` (criado a partir de v2.0.9)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Texto completo conforme modelo do cliente (3 parágrafos, sem omissão)
+✅ Distinção método de análise vs FAQ documentos vs CTA pós-orçamento
+✅ v2.0.9 preservado intacto
+
+### Impacto
+- **Padroniza:** Resposta quando o cliente pergunta como fazer a análise (link ou loja)
+- **Melhora:** Cliente recebe orientação completa sobre as duas opções e suporte presencial
+- **Previne:** Respostas parciais ou troca indevida pela Resposta combinada PayJoy
+
+---

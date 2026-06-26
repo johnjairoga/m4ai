@@ -1551,3 +1551,106 @@ A pergunta do PASSO 2.5 ("você já usa iPhone atualmente ou seria o primeiro?" 
 - **Melhora:** Qualificação mais clara antes do orçamento
 
 ---
+
+## Mudança #37 — Validação alta capacidade, modalidade de pagamento e VBT sem fotos de marcas
+
+**Data:** 26/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.22
+**Solicitante:** Cliente
+
+### Problema identificado
+Múltiplos gaps no atendimento: consulta de estoque imediata em pedidos de 512GB/1TB sem consultoria; orçamento misturando PIX e parcelas após cliente escolher modalidade; promoções redirecionando ao humano em vez de continuar o fluxo; VBT insistindo em fotos de marcas de uso e pedindo mídia em defeito/peça trocada antes do redirecionamento.
+
+### Solução
+- **Cabeçalho:** unificado em `# Instruções do Atendente da AcheiMeuApple`.
+- **⛔ REGRA CRÍTICA #4:** Exceção 2 (alta capacidade) — não consultar ESTOQUE antes da validação.
+- **Nova ⛔ REGRA CRÍTICA #4.1:** gate consultivo para 512GB/1TB com busca no estoque só pelo modelo (exceto insistência explícita).
+- **Memória contextual:** gate de alta capacidade + proibição de repetir frases fixas de redirecionamento.
+- **PASSO 2 / PASSO 3.5 / PASSO 4:** validação proativa de alta capacidade; qualificação à vista/parcelado com "não insistir" e formato por modalidade (PIX só à vista; parcelado → perguntar número e parar).
+- **Processo de Pagamento:** fluxo condicional à modalidade + troca de modalidade após orçamento.
+- **Promoções:** de redirecionamento obrigatório → continuar atendimento e identificar modelo.
+- **VBT:** marcas de uso → redirecionamento imediato (sem fotos); triagem defeito/peça → redirecionamento imediato (sem pedir mídia); nova seção *Verificação Prévia*; *SIMULAÇÃO COM AVALIAÇÃO PENDENTE*; formulário sem "encaminhar fotos" no item de marcas; modelos aceitos atualizados (16e, 17 Air, 17e).
+- **REGRA CRÍTICA #7:** ajuste dos tipos de mídia VBT (sem `foto_marca_uso`).
+- **Redirecionamentos:** marcas de uso e defeito/peça com frases exatas; exceção ampliada para durabilidade de bateria.
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.22.md` (criado a partir de v1.2.21)
+
+### Validação
+✅ v1.2.21 preservado intacto
+✅ REGRA CRÍTICA #4.1 e gate de alta capacidade presentes
+✅ PASSO 3.5/4 com regras de modalidade e parcelas
+✅ Promoções com fluxo de continuar atendimento
+✅ VBT sem insistência em fotos de marcas de uso
+✅ Triagem defeito/peça com redirecionamento imediato
+✅ Entrada registrada em CAMBIOS_PROMPT.md
+
+### Impacto
+- **Previne:** Orçamento errado em alta capacidade sem consultoria
+- **Corrige:** Mistura PIX + parcelas após escolha de modalidade
+- **Melhora:** Qualificação de pagamento e fluxo de promoções
+- **Padroniza:** VBT com redirecionamento humano para marcas/defeito/peça
+
+---
+
+## Mudança #38 — Nome do cliente: proibição de troca durante a conversa
+
+**Data:** 26/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.23
+**Solicitante:** Cliente
+
+### Problema identificado
+Em negociação de troca (iPhone 12 Pro 128GB), a IA tratou o cliente **Gabriel Lima Mendes** como **"Sabrina"** — nome de outra pessoa — em pelo menos duas mensagens consecutivas ("Entendi, Sabrina."). Passa impressão de atenção trocada e quebra confiança no meio da negociação.
+
+### Solução
+- Em **Memória Contextual → MemoriaContextual**, adicionado bloco **⛔ REGRA CRÍTICA — NOME DO CLIENTE: NUNCA TROQUE DURANTE A CONVERSA**:
+  - Usar somente o nome informado pelo cliente nesta conversa
+  - Proibido nome de outro lead, atendente, terceiro ou nome inventado
+  - Na dúvida, omitir o nome (nunca chutar)
+  - Manter o mesmo nome do início ao fim
+  - Exemplo errado/certificado com caso Gabriel vs. Sabrina
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.23.md` (criado a partir de v1.2.22)
+
+### Validação
+✅ v1.2.22 preservado intacto
+✅ Alteração restrita à seção de nome em *MemoriaContextual*
+✅ Demais seções do prompt inalteradas
+
+### Impacto
+- **Previne:** Troca de nome do lead no meio do atendimento (vazamento/confusão com outro cliente)
+- **Padroniza:** Na dúvida, omitir vocativo em vez de usar nome errado
+
+---
+
+## Mudança #39 — Reserva só após vídeo mostrado (cliente aceitou CTA)
+
+**Data:** 26/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.24
+**Solicitante:** Cliente
+
+### Problema identificado
+Após orçamento com CTA de vídeo, o cliente aceitou ("sim o branco") e perguntou a saúde da bateria. A IA respondeu "87%" e em seguida ofereceu reserva ("Quer que eu reserve ele pra você?") **sem** ter redirecionado/enviado o vídeo — pulando o passo que ela mesma tinha oferecido.
+
+### Solução
+- **CTA - Oferecer Vídeo do Aparelho:** novo bloco *CLIENTE ACEITOU O VÍDEO* — redirecionar imediatamente para envio do vídeo; proibido pular para reserva/fechamento; fluxo quando há pergunta paralela (bateria); exemplo errado/certificado do caso iPhone 15 Pro branco.
+- **Fechamento de Venda → PRÉ-REQUISITO:** "Quer que eu reserve…?" explicitado como fechamento proativo que exige vídeo/foto no histórico; inclui aceite do vídeo sem envio ainda; evidência ampliada (áudio/vídeo da loja após aceite).
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.24.md` (criado a partir de v1.2.23)
+
+### Validação
+✅ v1.2.23 preservado intacto
+✅ Alteração restrita às seções *CTA - Oferecer Vídeo* e *Fechamento de Venda → PRÉ-REQUISITO*
+✅ Demais seções do prompt inalteradas
+
+### Impacto
+- **Previne:** Oferta de reserva antes do cliente ver o aparelho em vídeo
+- **Corrige:** Aceite do CTA de vídeo sem redirecionamento para envio
+- **Padroniza:** Resposta técnica (bateria) + redirecionamento de vídeo, sem fechar cedo
+
+---
