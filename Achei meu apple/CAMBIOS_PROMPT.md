@@ -1750,3 +1750,35 @@ Muitos clientes enviam o iPhone de interesse já na primeira mensagem (ex.: "que
 - **Padroniza:** Verificação de memória antes da pergunta direcionada do passo 2
 
 ---
+
+## Mudança #43 — Quebra de objeção seminovo: entrega completa em um turno
+
+**Data:** 01/07/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.28
+**Solicitante:** Cliente
+
+### Problema identificado
+Caso real (Jairo / iPhone 16 Pro Max 256GB): cliente disse "Não quero seminovo, quero novo" e a IA respondeu **somente** com o parágrafo de descontinuação/alerta de golpe — **sem** lista `[ORÇAMENTO]`, **sem** reconsulta de estoque e **sem** fechamento de custo-benefício. A quebra de objeção da v1.2.26 existia no prompt mas não foi entregue por completo.
+
+### Solução
+- Em **Quebra de Objeção — Cliente rejeita seminovo / insiste em novo → Cenário B**, adicionada **REGRA CRÍTICA — ENTREGA COMPLETA EM UM ÚNICO TURNO** com checklist dos 4 blocos obrigatórios (texto + ESTOQUE + `[ORÇAMENTO]` + fechamento).
+- Exemplo explícito do **erro gravíssimo** (resposta truncada do caso Jairo) marcado como proibido.
+- PASSO 1 reforçado: parágrafo deve incluir **todos** os elementos (empatia, descontinuação, procedência, qualidade, garantia) — não só alerta de golpe.
+- PASSO 2/3/4 marcados como obrigatórios no **mesmo turno**; nota de exceção ao limite de 400 caracteres para listagem.
+- Exemplo prático atualizado com nome Jairo e mensagem única "Não quero seminovo, quero novo".
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.28.md` (criado a partir de v1.2.27)
+
+### Validação
+✅ v1.2.27 preservado intacto
+✅ Regra anti-truncamento com caso real documentado
+✅ Fluxo completo: argumento + lista + fechamento em uma resposta
+
+### Impacto
+- **Corrige:** IA parando após só o texto consultivo sem mostrar estoque
+- **Previne:** Quebra de objeção incompleta no Cenário B (modelo só seminovo)
+- **Padroniza:** Entrega dos 4 blocos obrigatórios em um único turno
+
+---

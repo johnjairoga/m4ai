@@ -62,7 +62,7 @@ Cada pasta de projeto tem seu próprio `CAMBIOS_PROMPT.md`. Append da nova entra
 
 | Pasta | Prompt atual | CAMBIOS_PROMPT.md |
 |---|---|---|
-| `Achei meu apple/` | `achei meu Apple_v1.2.27.md` | ✅ |
+| `Achei meu apple/` | `achei meu Apple_v1.2.28.md` | ✅ |
 | `Cell phone store/` | `Cell Phone Store_v1.0.1.md` | ✅ |
 | `Conserta Smart/` | `Conserta Smart_v1.0.4.md` | ✅ |
 | `Francivaldo phones/` | `Francivaldo Phones_v2.0.10.md` | ✅ |
