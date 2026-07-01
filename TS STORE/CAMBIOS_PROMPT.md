@@ -261,3 +261,71 @@ Subseção **Perguntas só sobre horário** substituída por **Quando o cliente 
 - **Melhora:** Distinção clara entre "perguntou horário" vs "só quer preço"
 
 ---
+
+## Mudança #8 — Saúde de bateria dos seminovos atualizada para acima de 90%
+
+**Data:** 01/07/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.7
+**Solicitante:** Cliente
+
+### Problema identificado
+A IA informava aos clientes que os aparelhos seminovos possuem saúde de bateria acima de **80%**. Essa informação estava desatualizada: a política atual da loja é comercializar seminovos com saúde de bateria acima de **90%**.
+
+### Solução
+Dois pontos ajustados:
+- **Diferenciais da TS Store:** adicionado bullet explícito — *"Seminovos com saúde de bateria acima de 90% — todos os aparelhos passam por revisão antes da venda"*
+- **FAQ — Saúde da bateria dos seminovos:** nova subseção antes do bloco de garantia, com gatilhos, regra de resposta obrigatória (sempre acima de 90%), exemplo de frase ao cliente e proibição explícita de usar qualquer percentual diferente de 90%
+
+### Arquivos afetados
+- `TS STORE_v1.0.7.md` (criado a partir de v1.0.6)
+
+### Validação
+✅ Diferenciais atualizados com threshold correto de 90%
+✅ Regra explícita de resposta ao cliente quando perguntado sobre bateria dos seminovos
+✅ Proibição de informar percentual diferente de 90%
+✅ Fluxos de VBT, pagamento, encomenda e demais seções não alterados
+
+### Impacto
+- **Corrige:** IA informando 80% de saúde de bateria para os seminovos vendidos pela loja
+- **Padroniza:** Threshold único de 90% para comunicação com o cliente sobre bateria dos seminovos
+- **Melhora:** Alinhamento entre a política real da loja e o que a IA informa ao cliente
+
+---
+
+## Mudança #9 — Mensagem de encerramento mais acolhedora e perguntas de qualificação para cliente hesitante
+
+**Data:** 01/07/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.8
+**Solicitante:** Cliente
+
+### Problema identificado
+A mensagem de encerramento usada quando o cliente informa que vai continuar depois era fria e perdia a oportunidade de manter o cliente engajado. Exemplo da copy anterior: *"Vamos deixar para continuar depois. Qualquer coisa, alguém da equipe entra em contato caso necessário."*
+
+Além disso, o bloco de cliente hesitante (ainda em aberto) não tinha exemplos concretos de perguntas de qualificação para identificar objeções.
+
+### Solução
+Três ajustes aplicados na seção **Encerramento ou pausa da conversa pelo cliente** e em **FINALIZAÇÃO SEM VENDA → Cliente Hesitante**:
+
+1. **Copy de referência atualizado** — novas frases acolhedoras com convite à visita na loja quando fizer sentido; regra explícita de quando incluir o convite (não forçar em todo encerramento)
+2. **Exemplo `✅ CORRETO` atualizado** — JSON com nova copy em 2 bolhas: acolhimento + convite à visita
+3. **Perguntas de qualificação adicionadas** em Cliente Hesitante (ainda em aberto): *"Ficou dentro do que você busca?"*, *"Tem algo que podemos ajustar?"*, *"O que te impede de fecharmos hoje?"*
+
+### Arquivos afetados
+- `TS STORE_v1.0.8.md` (criado a partir de v1.0.7)
+
+### Validação
+✅ Copy de encerramento atualizado para tom acolhedor com convite à visita
+✅ Regra de quando incluir o convite (contexto apropriado, não forçado)
+✅ Exemplo JSON `✅ CORRETO` atualizado com nova copy em 2 bolhas
+✅ Perguntas de qualificação adicionadas para cliente hesitante em aberto
+✅ Regras de proibição (sem CTA, sem "?" no final, sem handoff) mantidas
+✅ Fluxos de VBT, pagamento, bateria e demais seções não alterados
+
+### Impacto
+- **Corrige:** Mensagem de encerramento fria e sem engajamento
+- **Melhora:** Experiência de saída do cliente — tom acolhedor, convite à loja
+- **Melhora:** Qualificação de objeções com perguntas direcionadas para clientes hesitantes em aberto
+
+---

@@ -73,3 +73,37 @@ Atualizados também **Redirecionamentos** (item 1) e **CTA** (contexto pós-alte
 - **Previne:** Falso handoff / frase de espera sem ação real
 
 ---
+
+## Mudança #3 — Remover link de pagamento como método de pagamento
+
+**Data:** 01/07/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.2
+**Solicitante:** Cliente
+
+### Problema identificado
+A frase "Aceitamos dinheiro, Pix e cartão de crédito em até 18x" não especificava que o cartão só é aceito na maquineta física. A IA estava interpretando que poderia oferecer link de pagamento quando clientes perguntavam sobre parcelamento remoto pelo cartão — como evidenciado em conversa real onde o cliente perguntou "vocês passam link de parcelamento no cartão?" e a Iza concordou em fornecer um link, sendo que a loja só aceita cartão presencialmente na maquineta.
+
+### Solução
+Atualização da seção **Formas de Pagamento** (dentro de "Informações da Loja — Só Informar SE o Cliente Perguntar"):
+- Resposta atualizada para especificar explicitamente a maquineta e os tipos de cartão
+- Adicionada regra ⚠️ **SEM LINK DE PAGAMENTO** logo abaixo, com:
+  - Proibição explícita de oferecer ou mencionar link de pagamento
+  - Confirmação de que cartão é aceito **somente na maquineta física**
+  - Resposta scripted para quando o cliente perguntar sobre link/pagamento online pelo cartão
+
+### Arquivos afetados
+- `Litoral Phones_v1.0.2.md` (criado a partir de v1.0.1)
+
+### Validação
+✅ Resposta "Formas de Pagamento" menciona explicitamente a maquineta
+✅ Proibição de link de pagamento documentada com ❌
+✅ Script de resposta cadastrado para perguntas sobre pagamento por link
+✅ v1.0.1 preservado intacto
+
+### Impacto
+- **Corrige:** Iza oferecendo link de pagamento para cartão quando a loja só aceita maquineta física
+- **Previne:** Promessas de pagamento remoto pelo cartão que a loja não consegue cumprir
+- **Padroniza:** Cartão sempre vinculado à maquineta presencial
+
+---

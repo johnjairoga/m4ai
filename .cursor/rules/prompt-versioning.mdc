@@ -62,17 +62,17 @@ Cada pasta de projeto tem seu próprio `CAMBIOS_PROMPT.md`. Append da nova entra
 
 | Pasta | Prompt atual | CAMBIOS_PROMPT.md |
 |---|---|---|
-| `Achei meu apple/` | `achei meu Apple_v1.2.14.md` | ✅ |
+| `Achei meu apple/` | `achei meu Apple_v1.2.27.md` | ✅ |
 | `Cell phone store/` | `Cell Phone Store_v1.0.1.md` | ✅ |
 | `Conserta Smart/` | `Conserta Smart_v1.0.4.md` | ✅ |
 | `Francivaldo phones/` | `Francivaldo Phones_v2.0.10.md` | ✅ |
 | `Toricelli Iphones/` | `Toricelli Iphones_v1.0.3.md` | ✅ |
-| `T2H/` | `T2H_v1.0.2.md` | ✅ |
+| `T2H/` | `T2H_v1.0.3.md` | ✅ |
 | `Go Tech/` | `Go Tech_v1.0.3.md` | ✅ |
 | `JS Imports Cell/` | `JS Imports Cell_v1.0.1.md` | ✅ |
-| `TS STORE/` | `TS STORE_v1.0.6.md` | ✅ |
+| `TS STORE/` | `TS STORE_v1.0.8.md` | ✅ |
 | `Casa do celular - Salvador Shopping/` | `Casa do celular - Salvador Shopping_v1.0.2.md` | ✅ |
-| `Litoral phones/` | `Litoral Phones_v1.0.1.md` | ✅ |
+| `Litoral phones/` | `Litoral Phones_v1.0.2.md` | ✅ |
 | `Iphone Barato CG/` | `Iphone Barato CG_v1.0.1.md` | ✅ |
 | `Senhor Smart/` | `Senhor Smart_v1.0.1.md` | ✅ |
 | `Vini Shop/` | `Vini Shop_v1.0.1.md` | ✅ |

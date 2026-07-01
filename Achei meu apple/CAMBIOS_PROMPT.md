@@ -1654,3 +1654,99 @@ Após orçamento com CTA de vídeo, o cliente aceitou ("sim o branco") e pergunt
 - **Padroniza:** Resposta técnica (bateria) + redirecionamento de vídeo, sem fechar cedo
 
 ---
+
+## Mudança #40 — Nova versão base para próximos ajustes
+
+**Data:** 26/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.25
+**Solicitante:** Cliente
+
+### Problema identificado
+Necessidade de uma nova versão versionada como ponto de partida para os próximos ajustes do prompt, sem alterar o conteúdo funcional da v1.2.24.
+
+### Solução
+- Criado `achei meu Apple_v1.2.25.md` como cópia integral de `achei meu Apple_v1.2.24.md`, preservando todas as regras vigentes (nome do cliente, vídeo antes de reserva, alta capacidade, VBT, modalidade de pagamento, etc.).
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.25.md` (criado a partir de v1.2.24)
+
+### Validação
+✅ v1.2.24 preservado intacto
+✅ v1.2.25 idêntico ao conteúdo de v1.2.24
+✅ Entrada registrada em CAMBIOS_PROMPT.md
+
+### Impacto
+- **Padroniza:** Base versionada para aplicar os próximos ajustes sem editar versões anteriores
+
+---
+
+## Mudança #41 — Quebra de objeção: cliente rejeita seminovo / quer novo
+
+**Data:** 26/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.26
+**Solicitante:** Cliente
+
+### Problema identificado
+Quando o cliente recusava seminovo ("Não quero seminovo", "Quero novo") após receber orçamento — como no caso do iPhone 16 Pro Max 256GB — a IA não apresentava argumentos consultivos que gerassem confiança nem reexecutava a lista de seminovos disponíveis com contexto adequado (descontinuação do lacrado, procedência, qualidade, garantia).
+
+### Solução
+- Nova seção **Quebra de Objeção — Cliente rejeita seminovo / insiste em novo** em *Persuasão e Quebra de Objeções*:
+  - Gatilhos ("não quero seminovo", "quero novo", etc.)
+  - Roteamento: **Cenário A** — se existe lacrado no estoque, apresentar só novo; **Cenário B** — modelo só seminovo/descontinuado → fluxo consultivo completo
+  - Texto consultivo com empatia, descontinuação (REGRA #6), procedência de fornecedores, revisão/qualidade e garantia — **sem valores no parágrafo**
+  - Reconsulta `ESTOQUE` e lista seminovos em `[ORÇAMENTO]` com **(Semi-Novo)**, valores **uma única vez**
+  - Fechamento com frase de custo-benefício + CTA de vídeo
+  - Exemplo prático do caso iPhone 16 Pro Max (Gloria)
+- Referência cruzada adicionada em *Persuasão*.
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.26.md` (criado a partir de v1.2.25)
+
+### Validação
+✅ v1.2.25 preservado intacto
+✅ Fluxo Cenário A (novo disponível) vs. Cenário B (só seminovo) definidos
+✅ Proibição de repetir preços no texto consultivo
+✅ Alinhado ao exemplo real da conversa WhatsApp
+
+### Impacto
+- **Melhora:** Argumentação consultiva quando cliente rejeita seminovo
+- **Previne:** Resposta seca ou repetir orçamento sem contexto
+- **Padroniza:** Lista de estoque + confiança na opção seminova quando lacrado não existe
+
+---
+
+## Mudança #42 — Saudação: não reperguntar modelo já informado na 1ª mensagem
+
+**Data:** 26/06/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.27
+**Solicitante:** Cliente
+
+### Problema identificado
+Muitos clientes enviam o iPhone de interesse já na primeira mensagem (ex.: "quero iPhone 16 Pro Max", "quanto tá o 14 Pro?"). Após a saudação e confirmação do nome, a IA repetia "Você está procurando algum iPhone específico…?" — ignorando o que o cliente já tinha informado e soando desatenta.
+
+### Solução
+- **MemoriaContextual:** regra *MODELO JÁ INFORMADO — NÃO REPERGUNTAR NA SAUDAÇÃO* — registrar modelo da 1ª mensagem e proibir reperguntar na saudação.
+- **Regra de Saudação → Pergunta do PASSO 2:** condicionada — só usar se o modelo **ainda não** consta no histórico; se já consta, pular e retomar o pedido.
+- **Passo 1 (nome já informado / após responder nome):** fluxo bifurcado — com modelo na 1ª msg → saudação + nome + retoma pedido (PASSO 2.5); sem modelo → mantém pergunta direcionada.
+- **GATILHO DE ANÚNCIO e NOME ANTES DE ATENDER:** alinhados — não perguntar modelo se já veio no histórico.
+- **PASSO 1 (orçamento):** pular "Você já tem algum modelo em mente?" se modelo já na memória.
+- Exemplos práticos adicionados (Gloria + 16 Pro Max; Pedro + 14 Pro Max na 1ª msg).
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.27.md` (criado a partir de v1.2.26)
+
+### Validação
+✅ v1.2.26 preservado intacto
+✅ Alterações restritas à saudação, MemoriaContextual (modelo) e PASSO 1 do fluxo de orçamento
+✅ Fluxo de nome antes de atender mantido
+✅ PASSO 2.5 (troca) preservado após retomar o modelo
+
+### Impacto
+- **Previne:** Reperguntar qual iPhone o cliente quer quando já informou na 1ª mensagem
+- **Melhora:** Agilidade e percepção de atenção no início do atendimento
+- **Padroniza:** Verificação de memória antes da pergunta direcionada do passo 2
+
+---

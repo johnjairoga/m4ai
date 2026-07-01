@@ -91,3 +91,38 @@ Adicionado bloco de **VERIFICAÇÃO ANTI-REPETIÇÃO** imediatamente antes das r
 
 ---
 
+## Mudança #3 — Nova Modalidade de Pagamento: Crédito para Trabalhador
+
+**Data:** 01/07/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.3
+**Solicitante:** Cliente
+
+### Problema identificado
+A loja passou a oferecer uma nova modalidade de pagamento — Crédito para Trabalhador — que não estava mapeada no prompt. Quando clientes perguntavam sobre formas de parcelamento ou financiamento, a IA não apresentava essa opção.
+
+### Solução
+Adicionada a nova modalidade em dois pontos do prompt:
+
+1. **Seção "FORMAS DE PAGAMENTO DA LOJA":** incluída a linha "Crédito para Trabalhador (desconto mensal em folha de pagamento)" na lista de formas aceitas.
+
+2. **Nova seção "CRÉDITO PARA TRABALHADOR"** (inserida após a seção CDC): define requisitos do cliente (mínimo 21 anos + 1 ano de carteira assinada na mesma empresa), vantagens (sem cartão de crédito, sem vínculo bancário), regra de quando mencionar (somente quando cliente demonstrar interesse em pagamento/financiamento/parcelamento), frase modelo para apresentação, instrução de envio do link do formulário (`[LINK_CREDITO_TRABALHADOR]` — placeholder a ser substituído pela URL real) e redirecionamento ao vendedor para mais detalhes.
+
+### Arquivos afetados
+- `T2H_v1.0.3.md` (criado a partir de v1.0.2)
+
+### Validação
+✅ Modalidade adicionada à lista de formas de pagamento da loja
+✅ Seção própria com requisitos, vantagens e regras de apresentação
+✅ Regra de não proatividade no primeiro contato (igual ao padrão do CDC)
+✅ Frase modelo definida para padronizar a comunicação ao cliente
+✅ Fluxo de envio do formulário incluído (aguarda substituição do link real)
+✅ Redirecionamento ao vendedor para detalhes avançados
+
+### Impacto
+- **Adiciona:** Nova opção de pagamento acessível para trabalhadores CLT
+- **Padroniza:** Apresentação da modalidade com requisitos claros e frase modelo
+- **Previne:** IA omitir essa opção quando cliente pergunta sobre financiamento/parcelamento
+
+---
+
