@@ -1813,3 +1813,37 @@ A loja passou a oferecer parcelamento em **até 24x** no cartão (antes 21x). O 
 - **Padroniza:** Regra única — 24x default; N específico quando o cliente pedir
 
 ---
+
+## Mudança #45 — Reforço anti-21x: regra crítica no topo + caso real iPhone 16 Plus
+
+**Data:** 03/07/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.30
+**Solicitante:** Cliente
+
+### Problema identificado
+Caso real (03/07/2026): cliente pediu "iPhone 16 Plus" e a IA respondeu com `💳21x de R$ 251,39` no formato padrão (PIX + parcelas), em vez de **24x** calculado. O v1.2.29 já tinha a regra de 24x, mas o agente ainda aplicava 21x — possivelmente por prompt de trabalho desatualizado (`achei meu Apple.md` com 21x) e falta de proibição explícita no topo do prompt.
+
+### Solução
+- Nova **⛔ REGRA CRÍTICA #6.1** no topo do prompt: padrão 24x obrigatório, proibição explícita de 21x como default, caso real ERRADO/CERTO (iPhone 16 Plus).
+- Correção de contradição no PASSO 5 (cartão): 24x por padrão em vez de perguntar parcelas.
+- **Cálculo de taxas:** passo 0.1 — `TAXAS_MAQ` deve usar **24** quando cliente não informou N; proibido 21 como padrão.
+- **Parcelamento Disponível** e **Regras Inegociáveis:** reforço anti-21x.
+- **`achei meu Apple.md`** sincronizado com v1.2.30 (arquivo de trabalho estava com 21x).
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.30.md` (criado a partir de v1.2.29)
+- `achei meu Apple.md` (sincronizado com v1.2.30)
+
+### Validação
+✅ v1.2.29 preservado intacto
+✅ Regra crítica #6.1 visível no topo do prompt
+✅ Caso real documentado como erro gravíssimo
+✅ `achei meu Apple.md` sem referências a 21x como padrão
+
+### Impacto
+- **Corrige:** Agente enviando 21x no orçamento padrão após pedido de modelo
+- **Previne:** Uso de hábito/memória de 21x e chamada incorreta de `TAXAS_MAQ`
+- **Melhora:** Deploy via arquivo de trabalho alinhado à versão versionada
+
+---
