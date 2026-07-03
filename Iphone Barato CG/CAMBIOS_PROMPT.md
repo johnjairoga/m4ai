@@ -71,3 +71,36 @@ Reescrita da seção **PRÉ-REQUISITO OBRIGATÓRIO — `aparelhos_disponiveis`**
 - **Melhora:** Priorização de modelos disponíveis a pronta entrega (ex.: linha atual lacrada)
 
 ---
+
+## Mudança #3 — Modelos aceitos na troca corrigidos para a partir do XR
+
+**Data:** 03/07/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.2
+**Solicitante:** Cliente
+
+### Problema identificado
+A IA informava que a loja aceita iPhones "a partir do iPhone 11" na troca, porém a política real da loja é aceitar a partir do iPhone XR. Exemplo real: cliente recebeu a mensagem "Trabalhamos com iPhones a partir do iPhone 11", mas XR, XS e XS Max também são aceitos.
+
+### Solução
+Alterada a seção **MODELOS ACEITOS NA VBT** e o **PASSO 1: VERIFICAÇÃO INICIAL** da seção "Venda a Base de Troca":
+- Regra principal: "a partir do iPhone 11" → "a partir do iPhone XR"
+- Lista de aceitos: adicionados iPhone XR, XS, XS Max
+- Lista de não aceitos: "iPhones anteriores ao 11 (iPhone X, XR, XS, XS Max…)" → "iPhones anteriores ao XR (iPhone X, 8, 8 Plus, 7…)"
+- Respostas template do Passo 1 (genérico e recusa) atualizadas para "a partir do iPhone XR"
+
+### Arquivos afetados
+- `Iphone Barato CG_v1.0.2.md` (criado a partir de v1.0.1)
+
+### Validação
+✅ Regra principal corrigida para iPhone XR
+✅ XR, XS e XS Max adicionados à lista de aceitos
+✅ iPhone X continua como não aceito, corretamente separado do XR
+✅ Templates de resposta (genérico e recusa) atualizados
+✅ v1.0.1 preservado intacto
+
+### Impacto
+- **Corrige:** Informação errada que impedia aceitação de iPhone XR, XS e XS Max como entrada na troca
+- **Previne:** Perda de negócio por recusa indevida de modelos que a loja aceita
+
+---

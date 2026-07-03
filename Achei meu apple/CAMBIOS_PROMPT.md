@@ -1782,3 +1782,34 @@ Caso real (Jairo / iPhone 16 Pro Max 256GB): cliente disse "Não quero seminovo,
 - **Padroniza:** Entrega dos 4 blocos obrigatórios em um único turno
 
 ---
+
+## Mudança #44 — Parcelamento: 21x → 24x com valor calculado por padrão
+
+**Data:** 03/07/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.2.29
+**Solicitante:** Cliente
+
+### Problema identificado
+A loja passou a oferecer parcelamento em **até 24x** no cartão (antes 21x). O prompt ainda citava 21x e, em vários fluxos, usava texto genérico ("Pague em até 21x") ou perguntava quantas parcelas antes de apresentar o orçamento — em vez de mostrar o valor já calculado em 24x.
+
+### Solução
+- Atualização global de **21x → 24x** em todas as seções de parcelamento, templates de `[ORÇAMENTO]`, VBT e exemplos.
+- Nova **REGRA CRÍTICA — PARCELA PADRÃO 24x** em *Parcelamento Disponível*: orçamento padrão exibe `💵PIX` + `💳24x de R$ [valor calculado]`; se o cliente escolheu só cartão/parcelado → somente `💳24x`; se informou N parcelas → somente `💳Nx` com o N pedido.
+- *Processo de Pagamento → REGRA CRÍTICA - FLUXO DE ORÇAMENTO*, PASSO 4, formato de orçamento, VBT (PASSO 4.5), entrada + parcelamento e seção *Pagamento parcelado* alinhados: **24x por padrão**, sem perguntar quantas vezes quando o cliente não informou N.
+
+### Arquivos afetados
+- `achei meu Apple_v1.2.29.md` (criado a partir de v1.2.28)
+
+### Validação
+✅ v1.2.28 preservado intacto
+✅ Nenhuma referência residual a 21x no prompt
+✅ Padrão 24x com valor calculado (não texto genérico)
+✅ Cliente informando N parcelas → orçamento só com N informado
+
+### Impacto
+- **Atualiza:** Limite e comunicação de parcelamento para 24x conforme política atual da loja
+- **Melhora:** Orçamentos já saem com valor de parcela calculado em 24x, reduzindo idas e vindas
+- **Padroniza:** Regra única — 24x default; N específico quando o cliente pedir
+
+---

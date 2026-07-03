@@ -244,3 +244,41 @@ Saudação + pergunta de variante na mesma resposta; após cliente informar Fusi
 - **Mantém:** Resposta ao pedido na mesma rodada (após os 3 balões)
 
 ---
+
+## Mudança #6 — Tratamento de indecisão por valor com encaminhamento ao gerente
+
+**Data:** 03/07/2025
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.5
+**Solicitante:** Cliente
+
+### Problema identificado
+Quando o cliente dizia "vai pensar" e o motivo identificado era o valor do produto, a IA seguia o fluxo genérico de indecisão (PASSO 2 — riscos de postergar), sem aproveitar a oportunidade de buscar uma condição melhor. Não havia tratamento específico para objeção de valor dentro do fluxo de indecisão.
+
+### Solução
+Adicionado **PASSO 1.5** na seção **10.3 (Tratamento de indecisão)**. Quando o cliente confirmar que a indecisão é por causa do valor, a IA **não** segue para o PASSO 2 — em vez disso, envia a seguinte mensagem e encaminha para o gerente:
+
+> "Entendo perfeitamente! Como o valor foi o ponto que te deixou em dúvida, vou conversar com o gerente para verificar se conseguimos alguma condição melhor para você. Já vou encaminhar seu atendimento para que possamos te dar um retorno o quanto antes."
+
+→ Redirect: `gerenteResponsavel`
+
+O PASSO 2 (riscos de postergar por componente) passa a se aplicar apenas quando o motivo **não** for o valor.
+
+A tabela da seção **11.1** foi atualizada para documentar que `gerenteResponsavel` também é acionado neste cenário de indecisão por valor, com a frase específica da seção 10.3 (diferente da frase canônica usada para oferta de concorrente).
+
+### Arquivos afetados
+- `Conserta Smart_v1.0.5.md` (criado a partir de v1.0.4)
+
+### Validação
+✅ PASSO 1.5 inserido entre PASSO 1 e PASSO 2 na seção 10.3
+✅ Frase exata conforme sugestão do cliente
+✅ PASSO 2 restrito a motivos que não sejam valor
+✅ Tabela 11.1 atualizada com os dois triggers do `gerenteResponsavel`
+✅ Nenhum bloco protegido (tags, tools, QUEBRA) foi alterado
+
+### Impacto
+- **Melhora:** Conversão em situações de indecisão por preço — cliente recebe atenção imediata do gerente em vez de argumento genérico sobre riscos de postergar
+- **Previne:** Perda de lead por falta de negociação quando o valor é o ponto decisivo
+- **Padroniza:** Encaminhamento ao gerente como resposta padrão para objeção de valor na fase de indecisão
+
+---

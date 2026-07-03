@@ -126,3 +126,128 @@ Adicionada a nova modalidade em dois pontos do prompt:
 
 ---
 
+## Mudança #4 — Gatilho explícito para Crédito para Trabalhador e CDC ao listar formas de pagamento
+
+**Data:** 03/07/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.4
+**Solicitante:** Cliente
+
+### Problema identificado
+Quando o cliente perguntou explicitamente "quais são os métodos de pagamento que vocês têm disponíveis?", a IA listou apenas Pix, dinheiro, cartão de crédito e débito — omitindo completamente o **Crédito para Trabalhador** e o **CDC**.
+
+**Caso real:**
+> Cliente: "Queria saber quais são os métodos de pagamento que vocês têm disponíveis?"
+> IA: "Temos estas formas de pagamento: Pix, dinheiro, cartão de crédito (parcelado com acréscimo da maquininha, até 18x) e cartão de débito (à vista, com acréscimo da maquininha)."
+
+A causa raiz foi a regra vaga "SÓ mencionar quando o cliente demonstrar interesse em formas de pagamento" — que deveria cobrir esse caso mas não era específica o suficiente para a IA aplicar ao perguntar diretamente pelo catálogo completo de pagamentos.
+
+### Solução
+Reformuladas as regras das seções **CDC** e **CRÉDITO PARA TRABALHADOR** em dois pontos:
+
+1. **Gatilho explícito "SEMPRE mencionar"** substituindo o "SÓ mencionar" — com lista de situações que obrigam a menção, destacando explicitamente perguntas diretas sobre formas de pagamento disponíveis.
+
+2. **Exemplo concreto de erro** adicionado na seção CRÉDITO PARA TRABALHADOR:
+   - ❌ IA lista só Pix/cartão/débito sem mencionar Crédito para Trabalhador → ERRO GRAVE
+   - ✅ IA lista TODAS as formas quando cliente pergunta quais são
+
+### Arquivos afetados
+- `T2H_v1.0.4.md` (criado a partir de v1.0.3)
+
+### Validação
+✅ Regra de CDC atualizada com gatilho explícito para listagem completa
+✅ Regra de Crédito para Trabalhador atualizada com gatilho explícito
+✅ Exemplo concreto do erro real embutido no prompt como âncora de memória
+✅ "NUNCA oferecer proativamente" mantido — só bloqueia o primeiro contato sem contexto de pagamento
+
+### Impacto
+- **Corrige:** IA omitir Crédito para Trabalhador e CDC ao responder pergunta direta sobre formas de pagamento
+- **Previne:** Apresentação incompleta do catálogo de pagamentos disponíveis
+
+---
+
+## Mudança #5 — Regra de películas: tipos disponíveis, hidrogel e telas curvas
+
+**Data:** 03/07/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.5
+**Solicitante:** Cliente
+
+### Problema identificado
+O prompt não tinha nenhuma informação sobre películas. Qualquer pergunta sobre película seria redirecionada genericamente ao "setor de venda de acessórios", sem informar o que a loja tem ou não tem disponível — inclusive podendo confirmar erroneamente que tem hidrogel.
+
+### Solução
+Adicionada nova regra **"4. Películas — RESPONDER DIRETAMENTE"** na seção de Redirecionamentos, antes da regra de acessórios, com:
+
+- **Instrução explícita de NÃO redirecionar** para perguntas sobre película
+- **Tipos disponíveis por dispositivo:**
+  - iPhone: cerâmica, fosca, privacidade e vidro 3D
+  - Android: vidro 3D
+- **O que não trabalhamos:** hidrogel e películas para telas curvas
+- **Exemplo concreto de erro:** IA confirmando que tem hidrogel → ERRO GRAVE
+- **Renumeração** dos itens seguintes (5→6, 6→7, 7→8) para acomodar o novo item 4
+
+### Arquivos afetados
+- `T2H_v1.0.5.md` (criado a partir de v1.0.4)
+
+### Validação
+✅ Regra de resposta direta para películas (sem redirecionar)
+✅ Lista de tipos disponíveis por plataforma (iPhone e Android)
+✅ Hidrogel explicitamente marcado como indisponível
+✅ Telas curvas explicitamente marcadas como sem película disponível
+✅ Exemplo de erro embutido no prompt como âncora de memória
+✅ Numeração dos redirecionamentos corrigida
+
+### Impacto
+- **Corrige:** IA podendo confirmar que tem hidrogel (não temos)
+- **Corrige:** IA redirecionando ao invés de responder diretamente sobre películas
+- **Padroniza:** Resposta clara e completa sobre tipos de película por dispositivo
+
+---
+
+## Mudança #6 — Regra de películas promovida a seção standalone de prioridade máxima
+
+**Data:** 03/07/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v1.0.6
+**Solicitante:** Cliente
+
+### Problema identificado
+A regra de películas inserida na v1.0.5 (dentro da seção de redirecionamentos, como item #4) não funcionou. A IA ainda redirecionou ao "setor de venda de acessórios" quando o cliente perguntou sobre película hidrogel.
+
+**Caso real:**
+> Cliente: "Queria saber se vcs tem película hidrogel para aplicar no telefone?"
+> IA: "Vou te encaminhar para o setor de venda de acessórios, eles vão te confirmar a disponibilidade da película hidrogel e o valor certinho." → **ERRO GRAVE**
+
+### Causa raiz
+A regra estava enterrada dentro da seção de redirecionamentos. A IA identificou a palavra "película" como acessório e disparou o redirect genérico antes de processar o item #4 específico.
+
+### Solução
+1. **Removida** a regra de películas de dentro dos redirecionamentos (item #4 da v1.0.5)
+2. **Criada seção standalone** `🚨 REGRA CRÍTICA — PELÍCULAS 🚨` imediatamente antes da seção de Redirecionamentos, com:
+   - Declaração de prioridade máxima sobre qualquer redirecionamento de acessórios
+   - Lista de palavras-chave que acionam a regra ("película", "hidrogel", "protetor de tela", etc.)
+   - Bloqueios absolutos: ❌ redirecionar, ❌ confirmar que tem hidrogel
+   - Fluxo de resposta por caso (hidrogel, película genérica, tela curva)
+   - Exemplo concreto de resposta correta
+3. **Atualizado** o item de acessórios na seção de redirecionamentos com aviso explícito de que películas não se encaixam ali
+
+### Arquivos afetados
+- `T2H_v1.0.6.md` (criado a partir de v1.0.5)
+
+### Validação
+✅ Seção standalone com prioridade máxima declarada explicitamente
+✅ Palavras-chave mapeadas ("hidrogel", "película", "protetor de tela", etc.)
+✅ Bloqueio absoluto de redirecionamento ao setor de acessórios para películas
+✅ Fluxo de resposta: perguntar iPhone ou Android → listar opções corretas
+✅ Telas curvas: sem película disponível
+✅ Exemplo de resposta real embutido
+✅ Aviso no item de acessórios da seção de redirecionamentos
+
+### Impacto
+- **Corrige:** IA redirecionando ao "setor de venda de acessórios" para perguntas de película
+- **Corrige:** IA confirmando disponibilidade de hidrogel (não trabalhamos)
+- **Padroniza:** Resposta direta e completa com tipos disponíveis por dispositivo
+
+---
+

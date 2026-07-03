@@ -449,3 +449,66 @@ Quando o cliente perguntava sobre o **método de análise** para financiamento (
 - **Previne:** Respostas parciais ou troca indevida pela Resposta combinada PayJoy
 
 ---
+
+## Mudança #15 — Anti-repetição: não repetir perguntas já respondidas
+
+**Data:** 03/07/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v2.0.11
+**Solicitante:** Cliente
+
+### Problema identificado
+Caso real (Maria / Redmi Note 13 / boleto): após a IA perguntar o valor da entrada, a cliente respondeu *"200"* e, no turno seguinte, a IA repetiu exatamente a mesma pergunta (*"Maria, qual valor você pretende dar de entrada?"*), interrompendo o fluxo.
+
+### Solução
+- Nova seção **Anti-repetição — validar histórico antes de perguntar** em **Regras de Comunicação** — checklist Passos 1–4 e regra de ler a mensagem mais recente do cliente antes de perguntar.
+- **Passo 4** reforçado: se entrada **já informada**, pular pergunta, confirmar valor, requisitos **só se faltarem**, avançar para `ESTOQUE`/CTA ou **Passo 5**.
+- Tabela **Passo 3** (ramo boleto), **Regras Específicas**, checklist JSON e **Exemplo 3f-b** (Maria / R$ 200) atualizados.
+
+### Arquivos afetados
+- `Francivaldo Phones_v2.0.11.md` (criado a partir de v2.0.10)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Resposta *"200"* após pergunta de entrada não dispara nova pergunta de entrada
+✅ Caso real Maria documentado como ERRADO vs CERTO
+✅ v2.0.10 preservado intacto
+
+### Impacto
+- **Corrige:** Repetição de pergunta de entrada (e demais passos de qualificação) quando o cliente já respondeu
+- **Melhora:** Fluxo contínuo após informações fornecidas
+- **Previne:** Atendimento repetitivo e experiência ruim no WhatsApp
+
+---
+
+## Mudança #16 — Saudação enxuta e pagamento personalizado por aparelho
+
+**Data:** 03/07/2026
+**Status:** ✅ EXECUTADO
+**Versão:** v2.0.12
+**Solicitante:** Cliente
+
+### Problema identificado
+Na saudação inicial, a IA enviava bloco extenso com marcas **e** todas as formas de pagamento (cartão, boleto, CLT), gerando impressão de que **todas** as condições se aplicam a **todas** as marcas — especialmente **iPhone** (que **não** entra no boleto bancário do aparelho).
+
+### Solução
+- **Passo 2 (pós-nome):** texto oficial **único** em 1 balão — *"Prazer, [NOME]! Qual modelo… Samsung, Motorola, Realme, Xiaomi e iPhone."* — **sem** condições de pagamento; aguardar resposta do cliente.
+- **Primeira mensagem com nome:** até 4 balões (saudação + Maria + Passo 2) — **sem** parcelas/boleto/CLT.
+- **Passo 3:** formas de pagamento **compatíveis** apresentadas **somente após** modelo/marca — Android lacrado (4 opções) vs **iPhone** (à vista, cartão, CLT — **sem boleto**).
+- Exemplos **2**, **3**, **3b**, **3b-i** e checklist JSON atualizados.
+
+### Arquivos afetados
+- `Francivaldo Phones_v2.0.12.md` (criado a partir de v2.0.11)
+- `Francivaldo Phones.md` (arquivo de trabalho atualizado)
+
+### Validação
+✅ Saudação não inclui formas de pagamento antes do modelo
+✅ iPhone no Passo 3 sem oferta de boleto do aparelho
+✅ v2.0.11 preservado intacto
+
+### Impacto
+- **Corrige:** Interpretação equivocada de que boleto vale para iPhone na abertura
+- **Melhora:** Fluxo em etapas (nome → modelo → pagamento compatível)
+- **Padroniza:** Abertura curta e condições personalizadas por produto
+
+---
